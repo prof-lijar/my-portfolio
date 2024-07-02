@@ -7,7 +7,7 @@ export async function fetchBlogPosts() {
   noStore();
 
   try {
-    const data = await sql<Posts>`select * from blog`;
+    const data = await sql<Posts>`select * from blog order by id desc`;
     return data.rows;
   } catch (error) {
     console.error("Database Error:", error);

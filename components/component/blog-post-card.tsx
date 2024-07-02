@@ -16,7 +16,7 @@ import Link from "next/link";
 import CalculateReadingTime from "./calculate-reading-time";
 
 interface props {
-    id:string;
+  id: string;
   title: string;
   content: string;
 }
@@ -27,13 +27,18 @@ const BlogPostCard: React.FC<props> = ({ id, title, content }) => {
       <Card>
         <CardHeader>
           <CardTitle>{title}</CardTitle>
-          <CardDescription>
-            <div dangerouslySetInnerHTML={{ __html: content.substring(-5,100)+"..."}} />
+          <CardDescription className="flex justify-between pt-4">
+            <p>By Li Jar</p>
+            <CalculateReadingTime content={content} />
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center gap-2">
-            <CalculateReadingTime content={content}/>
+          <div className="flex items-center gap-2 ">
+            <div
+              dangerouslySetInnerHTML={{
+                __html: content.substring(-5, 200) + "...",
+              }}
+            />
           </div>
         </CardContent>
         <CardFooter>
