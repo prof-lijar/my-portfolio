@@ -35,6 +35,7 @@ const BlogPostCard: React.FC<props> = ({ id, title, content }) => {
         <CardContent>
           <div className="flex items-center gap-2 ">
             <div
+            className="text-lg"
               dangerouslySetInnerHTML={{
                 __html: content.substring(-5, 200) + "...",
               }}
