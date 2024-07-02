@@ -11,7 +11,9 @@ import {
 //icons
 import JavascriptIcon from "@/resource/js.svg";
 import JavaIcon from "@/resource/js.svg";
+import { Calculator } from "lucide-react";
 import Link from "next/link";
+import CalculateReadingTime from "./calculate-reading-time";
 
 interface props {
     id:string;
@@ -26,18 +28,17 @@ const BlogPostCard: React.FC<props> = ({ id, title, content }) => {
         <CardHeader>
           <CardTitle>{title}</CardTitle>
           <CardDescription>
-            <div dangerouslySetInnerHTML={{ __html: content }} />
+            <div dangerouslySetInnerHTML={{ __html: content.substring(-5,100)+"..."}} />
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex items-center gap-2">
-            <JavascriptIcon className="w-6 h-6" />
-            <JavaIcon className="w-6 h-6" />
+            <CalculateReadingTime content={content}/>
           </div>
         </CardContent>
         <CardFooter>
           <Link href={`/blog/${id}`}>
-            <Button variant="outline">Read&gt;&gt;</Button>
+            <Button variant="outline">Read More&gt;&gt;</Button>
           </Link>
         </CardFooter>
       </Card>

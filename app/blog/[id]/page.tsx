@@ -1,3 +1,4 @@
+import CalculateReadingTime from "@/components/component/calculate-reading-time";
 import { fetchBlogById } from "@/lib/data";
 
 export default async function Page({ params }: { params: { id: string } }) {
@@ -13,7 +14,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         <h1 className="text-3xl font-bold mb-4">{title}</h1>
         <div className="flex justify-between items-center text-gray-600 mb-6">
           <span>By Li Jar</span>
-          <span>2 min read</span>
+          <span><CalculateReadingTime content={content}/></span>
         </div>
         <div className="prose" dangerouslySetInnerHTML={{ __html: content }} />
       </div>
