@@ -1,23 +1,23 @@
-import { PythonIcon } from "@/components/icons/icons";
-import { Button } from "@/components/ui/button";
+import { PythonIcon } from '@/components/icons/icons'
+import { Button } from '@/components/ui/button'
 
-import { XIcon, ExpandIcon } from "lucide-react";
+import { XIcon, ExpandIcon } from 'lucide-react'
 
 //icons
-import JavascriptIcon from "@/resource/js.svg";
-import JavaIcon from "@/resource/js.svg";
-import { WriterEffect } from "@/components/component/typewriter-effect";
-import BlogPostCard from "@/components/component/blog-post-card";
-import { fetchBlogPosts } from "@/lib/data";
+import JavascriptIcon from '@/resource/js.svg'
+import JavaIcon from '@/resource/js.svg'
+import { WriterEffect } from '@/components/component/typewriter-effect'
+import BlogPostCard from '@/components/component/blog-post-card'
+import { fetchBlogPosts } from '@/lib/data'
 
 export default async function Blog() {
   const messages = [
-    "Hello, World!",
-    "Welcome to Next.js",
-    "Typewriter Effect in Action",
-  ];
+    'Hello, World!',
+    'Welcome to Next.js',
+    'Typewriter Effect in Action',
+  ]
 
-  const posts = await fetchBlogPosts();
+  const posts = await fetchBlogPosts()
 
   return (
     <section
@@ -32,6 +32,7 @@ export default async function Blog() {
           <div key={post.id}>
             <BlogPostCard
               id={post.id}
+              author={post.author}
               title={post.title}
               content={post.content}
             />
@@ -39,5 +40,5 @@ export default async function Blog() {
         ))}
       </div>
     </section>
-  );
+  )
 }

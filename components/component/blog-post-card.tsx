@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
   Card,
   CardHeader,
@@ -6,17 +6,18 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "@/components/ui/card";
+} from '@/components/ui/card'
 
 //icons
-import JavascriptIcon from "@/resource/js.svg";
-import JavaIcon from "@/resource/js.svg";
-import Link from "next/link";
+import JavascriptIcon from '@/resource/js.svg'
+import JavaIcon from '@/resource/js.svg'
+import Link from 'next/link'
 
 interface props {
-    id:string;
-  title: string;
-  content: string;
+  id: string
+  title: string
+  author: string
+  content: string
 }
 
 const BlogPostCard: React.FC<props> = ({ id, title, content }) => {
@@ -42,7 +43,7 @@ const BlogPostCard: React.FC<props> = ({ id, title, content }) => {
         </CardFooter>
       </Card>
     </div>
-  );
-};
+  )
+}
 
-export default BlogPostCard;
+export default BlogPostCard
