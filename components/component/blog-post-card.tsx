@@ -12,33 +12,39 @@ import {
 import JavascriptIcon from '@/resource/js.svg'
 import JavaIcon from '@/resource/js.svg'
 import Link from 'next/link'
+import CalculateReadingTime from './calculate-reading-time'
 
 interface props {
   id: string
-  title: string
   author: string
+  title: string
   content: string
 }
 
-const BlogPostCard: React.FC<props> = ({ id, title, content }) => {
+const BlogPostCard: React.FC<props> = ({ id, author, title, content }) => {
   return (
     <div>
       <Card>
         <CardHeader>
           <CardTitle>{title}</CardTitle>
-          <CardDescription>
-            <div dangerouslySetInnerHTML={{ __html: content }} />
+          <CardDescription className="flex justify-between pt-4">
+            <p>By {author}</p>
+            <CalculateReadingTime content={content} />
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="flex items-center gap-2">
-            <JavascriptIcon className="w-6 h-6" />
-            <JavaIcon className="w-6 h-6" />
+          <div className="flex items-center gap-2 ">
+            <div
+              className="text-lg"
+              dangerouslySetInnerHTML={{
+                __html: content.substring(-5, 200) + '...',
+              }}
+            />
           </div>
         </CardContent>
         <CardFooter>
           <Link href={`/blog/${id}`}>
-            <Button variant="outline">Read&gt;&gt;</Button>
+            <Button variant="outline">Read More&gt;&gt;</Button>
           </Link>
         </CardFooter>
       </Card>
