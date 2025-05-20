@@ -1,25 +1,25 @@
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import {
   SheetTrigger,
   SheetClose,
   SheetContent,
   Sheet,
-} from '@/components/ui/sheet'
-import { JSX, SVGProps } from 'react'
+} from "@/components/ui/sheet";
+import { JSX, SVGProps } from "react";
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 //icons
-import { XIcon, MenuIcon } from 'lucide-react'
+import { XIcon, MenuIcon } from "lucide-react";
 
 export function Navbar() {
   const menus = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    { name: 'Portfolio', href: '/portfolio' },
-    { name: 'Blog', href: '/blog' },
-  ]
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Portfolio", href: "/portfolio" },
+    { name: "Blog", href: "/blog" },
+  ];
 
   return (
     <header className="fixed top-0 z-50 flex h-16 w-full items-center justify-between bg-white px-4 shadow-sm dark:bg-gray-950 md:px-6">
@@ -28,7 +28,7 @@ export function Navbar() {
           <AvatarImage src="/lijar.jpg" />
           <AvatarFallback>LJ</AvatarFallback>
         </Avatar>
-        <span className="font-semibold">LI JAR | Portfolio</span>
+        <span className="font-semibold">LI JAR | prof-lijar</span>
       </Link>
       <nav className="hidden items-center gap-4 md:flex">
         {menus.map((menu) => {
@@ -40,7 +40,7 @@ export function Navbar() {
             >
               {menu.name}
             </Link>
-          )
+          );
         })}
       </nav>
       <Sheet>
@@ -63,7 +63,7 @@ export function Navbar() {
                       {menu.name}
                     </Link>
                   </SheetClose>
-                )
+                );
               })}
             </nav>
             <div className="flex items-center justify-between">
@@ -84,5 +84,5 @@ export function Navbar() {
         </SheetContent>
       </Sheet>
     </header>
-  )
+  );
 }

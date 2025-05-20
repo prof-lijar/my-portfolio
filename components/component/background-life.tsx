@@ -60,7 +60,7 @@ const Timeline = () => {
     <div className="w-full max-w-2xl mx-auto py-8 px-2 sm:px-6 bg-gradient-to-br from-white via-blue-50 to-purple-100 rounded-2xl shadow-2xl">
       <div className="relative pl-10 sm:pl-16">
         {/* Vertical Gradient Line */}
-        <div className="absolute top-0 left-3 sm:left-6 h-full w-1 bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400 rounded-full z-0"></div>
+        <div className="absolute top-0 left-3 sm:left-6 h-full w-1 bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400 rounded-full"></div>
         {events.map((event, index) => (
           <div
             key={index}
@@ -72,7 +72,7 @@ const Timeline = () => {
               <span className="block w-3.5 h-3.5 bg-white rounded-full shadow-inner"></span>
             </span>
             {/* Floating Year Badge */}
-            <span className="absolute -top-6 left-2 sm:left-6 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-blue-600 shadow-md border border-blue-100 z-20 animate-fade-in">
+            <span className="absolute -top-6 left-2 sm:left-6 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-blue-600 shadow-md border border-blue-100 z-10 animate-fade-in">
               {event.time}
             </span>
             {/* Glassmorphism Event Card */}

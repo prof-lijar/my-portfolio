@@ -23,17 +23,15 @@ export function NavigationMenuDemo() {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        {menus.map((menu)=>(
-          
-        <NavigationMenuItem key={menu.name}>
-          <Link href={menu.href} legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              {menu.name}
-            </NavigationMenuLink>
-          </Link>
-        </NavigationMenuItem>
+        {menus.map((menu) => (
+          <NavigationMenuItem key={menu.name}>
+            <Link href={menu.href} legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                {menu.name}
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
         ))}
-        
       </NavigationMenuList>
     </NavigationMenu>
   );
