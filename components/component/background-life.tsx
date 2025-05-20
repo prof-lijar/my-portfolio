@@ -52,24 +52,37 @@ const Timeline = () => {
       title: "Teaching & Sharing",
       time: "2023~",
       description:
-        "Teaching programming language mainly C and Html,Css to junior students, sharing knowledge information and leading in doing projects with them",
+        "Teaching programming language mainly Html,Css, javaScript, React, Next.js, java, python to junior students, sharing knowledge information and leading projects",
     },
   ];
 
   return (
-    <div className="max-w-4xl mx-auto p-2 sm:p-6">
-      <div className="relative border-l-2 border-gray-300 pl-4 sm:pl-8">
+    <div className="w-full max-w-2xl mx-auto py-8 px-2 sm:px-6 bg-gradient-to-br from-white via-blue-50 to-purple-100 rounded-2xl shadow-2xl">
+      <div className="relative pl-10 sm:pl-16">
+        {/* Vertical Gradient Line */}
+        <div className="absolute top-0 left-3 sm:left-6 h-full w-1 bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400 rounded-full z-0"></div>
         {events.map((event, index) => (
-          <div key={index} className="mb-8">
-            <div className="absolute w-3 h-3 sm:w-4 sm:h-4 bg-blue-500 rounded-full -left-1.5 sm:-left-2.5"></div>
-            <div className="ml-6 sm:ml-8">
-              <h3 className="font-bold mb-1 text-base sm:text-lg">
+          <div
+            key={index}
+            className="mb-16 flex items-start group relative animate-fade-in"
+            style={{ animationDelay: `${index * 80}ms` }}
+          >
+            {/* Glowing Timeline Dot */}
+            <span className="absolute left-[-0.7rem] sm:left-[-1.1rem] flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 shadow-lg animate-pulse z-10">
+              <span className="block w-3.5 h-3.5 bg-white rounded-full shadow-inner"></span>
+            </span>
+            {/* Floating Year Badge */}
+            <span className="absolute -top-6 left-2 sm:left-6 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-blue-600 shadow-md border border-blue-100 z-20 animate-fade-in">
+              {event.time}
+            </span>
+            {/* Glassmorphism Event Card */}
+            <div className="bg-white/60 backdrop-blur-lg rounded-2xl shadow-xl px-6 py-5 w-full border border-gray-100 hover:shadow-2xl transition-shadow duration-300 relative z-10">
+              <h3 className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 text-lg mb-2 flex items-center gap-2">
                 {event.title}
               </h3>
-              <p className="text-xs sm:text-sm text-gray-600 mb-2">
-                {event.time}
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                {event.description}
               </p>
-              <p className="text-sm sm:text-base">{event.description}</p>
             </div>
           </div>
         ))}
