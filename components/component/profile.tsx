@@ -11,6 +11,7 @@ import {
   FaGithub,
   FaBriefcase,
   FaInstagram,
+  FaLinkedin,
 } from "react-icons/fa";
 
 const info = [
@@ -56,6 +57,21 @@ const info = [
       </Link>
     ),
     icon: <FaInstagram className="text-pink-400" />,
+  },
+  {
+    label: "LinkedIn",
+    value: (
+      <Link
+        href={"https://www.linkedin.com/in/lijar/"}
+        target="_blank"
+        className="hover:text-blue-700 transition-colors"
+      >
+        <span className="font-bold underline underline-offset-1">
+          linkedin.com/in/lijar
+        </span>
+      </Link>
+    ),
+    icon: <FaLinkedin className="text-blue-600" />,
   },
   {
     label: "GitHub",
