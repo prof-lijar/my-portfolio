@@ -5,7 +5,7 @@ const MainIntro = () => {
   const message1 = ["LI JAR", "Software Engineer", "AI Engineer"];
 
   const message2 = [
-    "Hi, I'm LI JAR — a Software Engineer, passionate about building impactful digital products. I specialize in modern web, AI solutions, and thrive on turning ideas into real-world experiences. I love collaborating, sharing knowledge, and continuously learning to push the boundaries of technology.",
+    "Hi, I'm LI JAR — I can't sleep without solving your problems. Help me sleep.",
   ];
 
   return (
