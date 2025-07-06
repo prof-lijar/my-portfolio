@@ -10,13 +10,13 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <section>
-      <div className=" mt-5 container max-w-4xl mx-auto p-6 bg-white  rounded-lg">
+      <div className=" mt-5 container max-w-4xl mx-auto p-6 bg-gray-900/50 border-gray-800/50 rounded-lg">
         <h1 className="text-3xl font-bold mb-4">{title}</h1>
-        <div className="flex justify-between items-center text-gray-600 mb-6">
+        <div className="flex justify-between items-center text-gray-400 mb-6">
           <span>By Li Jar</span>
           <span><CalculateReadingTime content={content}/></span>
         </div>
-        <div className="prose" dangerouslySetInnerHTML={{ __html: content }} />
+        <div className="prose prose-invert" dangerouslySetInnerHTML={{ __html: content }} />
       </div>
     </section>
   );

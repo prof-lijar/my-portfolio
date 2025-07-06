@@ -16,128 +16,69 @@ import NetlifyIcon from "@/resource/netlify.svg";
 
 import JavaIcon from "@/resource/java.svg";
 import PythonIcon from "@/resource/python.svg";
-import TkinterIcon from "@/resource/tkinter.svg"
+import TkinterIcon from "@/resource/tkinter.svg";
 import Link from "next/link";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 const MySkills = () => {
+  const skills = {
+    frontend: [
+      { name: "Javascript", icon: <JavascriptIcon className="w-8 h-8 text-yellow-400" /> },
+      { name: "TypeScript", icon: <TypeScriptIcon className="w-8 h-8 text-blue-500" /> },
+      { name: "ReactJs", icon: <ReactJsIcon className="w-8 h-8 text-blue-400" /> },
+      { name: "NextJs", icon: <NextJsIcon className="w-8 h-8 text-gray-800 dark:text-white" /> },
+      { name: "Tailwind", icon: <TailWindCss className="w-8 h-8 text-teal-400" /> },
+      { name: "Bootstrap", icon: <BootStrapIcon className="w-8 h-8 text-purple-500" /> },
+    ],
+    backend: [
+      { name: "Python", icon: <PythonIcon className="w-8 h-8 text-blue-600" /> },
+      { name: "Flask", icon: <FlaskIcon className="w-8 h-8 text-gray-800 dark:text-white" /> },
+      { name: "Java", icon: <JavaIcon className="w-8 h-8 text-red-600" /> },
+      { name: "JSP", icon: <JSPIcon className="w-8 h-8 text-red-700" /> },
+      { name: "Databases", icon: <DatabaseIcon className="w-8 h-8 text-blue-900" /> },
+    ],
+    tools: [
+      { name: "Git", icon: <GitIcon className="w-8 h-8 text-orange-600" /> },
+      { name: "GitHub", icon: <Link href="https://github.com/davidlijar" target="_blank" rel="noopener noreferrer"><GitHubIcon className="w-8 h-8 text-gray-800 dark:text-white fill-current" /></Link> },
+      { name: "Vercel", icon: <VercelIcon className="w-8 h-8 text-gray-800 dark:text-white fill-current" /> },
+      { name: "Netlify", icon: <NetlifyIcon className="w-8 h-8 text-teal-500 fill-current" /> },
+    ],
+  };
+
   return (
-    <section className="container mx-auto px-4 md:px-6 lg:px-8" id="skills">
-      <div className="grid gap-8">
-        <div className="grid gap-4 place-items-center">
+    <section
+      className="container mx-auto px-2 py-10 md:px-4 lg:px-6"
+      id="skills"
+    >
+      <div className="grid gap-10">
+        <div className="grid gap-2 place-items-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             My Skills
           </h2>
-          <p>I have developed some skills : </p>
-        </div>
-        <div className="grid gap-4 place-items-center text-2xl">
-          <b>Language:</b>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <div className="flex flex-col items-center gap-2">
-            <CIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">C</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <JavaIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">Java</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <PythonIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">Python</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <JavascriptIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">Javascript</span>
-          </div>
-
-          <div className="flex flex-col items-center gap-2">
-            <TypeScriptIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">TypeScript</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <DatabaseIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">
-              PostgreSQL\MySQL
-              <br />
-              Firebase\Supabase
-            </span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <LanguageIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">English</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <LanguageIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">Korean</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <LanguageIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">Burmese</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <LanguageIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">Akha</span>
-          </div>
+          <p className="text-base text-gray-500 dark:text-gray-400">
+            I have developed some skills:
+          </p>
         </div>
 
-        <div className="grid gap-4 place-items-center text-2xl">
-          <b>FrameWork | Library | Tool:</b>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          <div className="flex flex-col items-center gap-2">
-            <JSPIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">JSP</span>
+        {Object.entries(skills).map(([category, skillList]) => (
+          <div key={category} className="grid gap-2">
+            <h3 className="text-xl font-semibold tracking-tight text-center md:text-left capitalize">
+              {category}
+            </h3>
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
+              {skillList.map((skill) => (
+                <div key={skill.name} className="bg-gray-900/50 border-gray-800/50 shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-300 rounded-lg p-4 flex flex-col items-center gap-2">
+                  {skill.icon}
+                  <span className="text-xs font-medium">{skill.name}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="flex flex-col items-center gap-2">
-            <FlaskIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">Flask</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <NextJsIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">NextJs</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <ReactJsIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">ReactJs</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <TkinterIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">Tkinter</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <BootStrapIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">Bootstrap</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <TailWindCss className="w-10 h-10" />
-            <span className="text-sm font-medium">Tailwind CSS</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <GitIcon className="w-10 h-10" />
-            <span className="text-sm font-medium">Git</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <Link href={"https://github.com/davidlijar"}>
-              <GitHubIcon className="w-10 h-10" />
-            </Link>
-            <span className="text-sm font-medium">GitHub</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <Link href={"https://github.com/davidlijar"}>
-              <VercelIcon className="w-10 h-10" />
-            </Link>
-            <span className="text-sm font-medium">Vercel</span>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <Link href={"https://github.com/davidlijar"}>
-              <NetlifyIcon className="w-10 h-10" />
-            </Link>
-            <span className="text-sm font-medium">Netlify</span>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );
 };
 
 export default MySkills;
+

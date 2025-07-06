@@ -24,7 +24,7 @@ interface props {
 const BlogPostCard: React.FC<props> = ({ id, author, title, content }) => {
   return (
     <div>
-      <Card>
+      <Card className="bg-gray-900/50 border-gray-800/50 shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-300">
         <CardHeader>
           <CardTitle>{title}</CardTitle>
           <CardDescription className="flex justify-between pt-4">

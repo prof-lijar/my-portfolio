@@ -43,7 +43,7 @@ const SubNav: React.FC = () => {
   }, [lastScrollY, originalPosition]);
 
   return (
-    <div ref={subNavRef} className={`w-full bg-white py-2 transition-all duration-300 ${isSticky ? 'fixed top-[30px] shadow-md' : ''}`}>
+    <div ref={subNavRef} className={`w-full bg-transparent py-2 transition-all duration-300 ${isSticky ? 'fixed top-[64px] bg-gray-900/50 backdrop-blur-md shadow-md' : ''}`}>
       <div className="pt-10 flex justify-center">
             <NavigationMenuDemo />
           </div>

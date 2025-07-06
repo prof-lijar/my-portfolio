@@ -22,7 +22,7 @@ export function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 z-50 flex h-16 w-full items-center justify-between bg-white px-4 shadow-sm dark:bg-gray-950 md:px-6">
+    <header className="fixed top-0 z-50 flex h-16 w-full items-center justify-between bg-transparent px-4 backdrop-blur-md md:px-6">
       <Link className="flex items-center gap-2" href="/">
         <Avatar>
           <AvatarImage src="/lijar.jpg" />
@@ -35,7 +35,7 @@ export function Navbar() {
           return (
             <Link
               key={menu.name}
-              className="text-lg font-medium text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+              className="text-lg font-medium text-gray-400 transition-colors hover:text-white"
               href={menu.href}
             >
               {menu.name}
@@ -57,7 +57,7 @@ export function Navbar() {
                 return (
                   <SheetClose asChild key={menu.name}>
                     <Link
-                      className="text-lg font-medium text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+                      className="text-lg font-medium text-gray-400 transition-colors hover:text-white"
                       href={menu.href}
                     >
                       {menu.name}

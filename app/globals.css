@@ -1,76 +1,213 @@
 @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+@tailwind components;
+@tailwind utilities;
 
-  @layer base {
-    :root {
-      --background: 0 0% 100%;
-      --foreground: 222.2 84% 4.9%;
-
-      --card: 0 0% 100%;
-      --card-foreground: 222.2 84% 4.9%;
-
-      --popover: 0 0% 100%;
-      --popover-foreground: 222.2 84% 4.9%;
-
-      --primary: 222.2 47.4% 11.2%;
-      --primary-foreground: 210 40% 98%;
-
-      --secondary: 210 40% 96.1%;
-      --secondary-foreground: 222.2 47.4% 11.2%;
-
-      --muted: 210 40% 96.1%;
-      --muted-foreground: 215.4 16.3% 46.9%;
-
-      --accent: 210 40% 96.1%;
-      --accent-foreground: 222.2 47.4% 11.2%;
-
-      --destructive: 0 84.2% 60.2%;
-      --destructive-foreground: 210 40% 98%;
-
-      --border: 214.3 31.8% 91.4%;
-      --input: 214.3 31.8% 91.4%;
-      --ring: 222.2 84% 4.9%;
-
-      --radius: 0.5rem;
-    }
-
-    .dark {
-      --background: 222.2 84% 4.9%;
-      --foreground: 210 40% 98%;
-
-      --card: 222.2 84% 4.9%;
-      --card-foreground: 210 40% 98%;
-
-      --popover: 222.2 84% 4.9%;
-      --popover-foreground: 210 40% 98%;
-
-      --primary: 210 40% 98%;
-      --primary-foreground: 222.2 47.4% 11.2%;
-
-      --secondary: 217.2 32.6% 17.5%;
-      --secondary-foreground: 210 40% 98%;
-
-      --muted: 217.2 32.6% 17.5%;
-      --muted-foreground: 215 20.2% 65.1%;
-
-      --accent: 217.2 32.6% 17.5%;
-      --accent-foreground: 210 40% 98%;
-
-      --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 210 40% 98%;
-
-      --border: 217.2 32.6% 17.5%;
-      --input: 217.2 32.6% 17.5%;
-      --ring: 212.7 26.8% 83.9%;
-    }
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --radius: 0.5rem;
   }
 
-  @layer base {
-    * {
-      @apply border-border;
-    }
-    body {
-      @apply bg-background text-foreground;
-    }
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 210 20% 98%;
+    --primary-foreground: 220.9 39.3% 11%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 216 12.2% 83.9%;
   }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes gradient-xy {
+  0%, 100% {
+    background-size: 400% 400%;
+    background-position: 0% 50%;
+  }
+  50% {
+    background-size: 200% 200%;
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes blob-1 {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-40%, -60%) scale(1.2);
+  }
+}
+
+@keyframes blob-2 {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-60%, -40%) scale(1.3);
+  }
+}
+
+@keyframes blob-3 {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-40%, -60%) scale(1.1);
+  }
+}
+
+.bg-grid-pattern {
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.animate-gradient-xy {
+  animation: gradient-xy 15s ease infinite;
+}
+
+.animate-blob-1 {
+  animation: blob-1 10s ease-in-out infinite;
+}
+
+.animate-blob-2 {
+  animation: blob-2 12s ease-in-out infinite;
+}
+
+.animate-blob-3 {
+  animation: blob-3 14s ease-in-out infinite;
+}
+
+/* Add fade-in animation for cards */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(16px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+.animate-fade-in {
+  animation: fade-in 0.6s cubic-bezier(.4,0,.2,1) both;
+}
+
+/* Add this at the end of your file */
+
+.card-glass {
+  background: rgba(255, 255, 255, 0.10);
+  border-radius: 0.85rem;
+  box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.10);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 1rem 0.5rem;
+  transition: transform 0.2s cubic-bezier(.4,0,.2,1), box-shadow 0.2s cubic-bezier(.4,0,.2,1);
+}
+.card-glass:hover {
+  transform: translateY(-2px) scale(1.03) rotate(-0.5deg);
+  box-shadow: 0 6px 24px 0 rgba(31, 38, 135, 0.18);
+  background: rgba(255,255,255,0.18);
+}
+
+.aurora-card {
+  position: relative;
+  border-radius: 1.2rem;
+  padding: 1.1rem 0.5rem 0.7rem 0.5rem;
+  background: rgba(30, 41, 59, 0.85);
+  overflow: hidden;
+  box-shadow: 0 4px 24px 0 rgba(56,189,248,0.13), 0 1.5px 8px 0 rgba(0,0,0,0.06);
+  transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.22s cubic-bezier(.4,0,.2,1);
+  z-index: 0;
+}
+.aurora-card::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  z-index: 0;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    #38bdf8 0deg,
+    #818cf8 90deg,
+    #f472b6 180deg,
+    #38bdf8 270deg,
+    #38bdf8 360deg
+  );
+  filter: blur(32px) brightness(1.2) opacity(0.7);
+  animation: aurora-move 6s linear infinite alternate;
+}
+@keyframes aurora-move {
+  0% { transform: scale(1) rotate(0deg);}
+  100% { transform: scale(1.15) rotate(12deg);}
+}
+.aurora-card > * {
+  position: relative;
+  z-index: 1;
+}
+.aurora-card:hover {
+  transform: translateY(-6px) scale(1.06) rotate(-1deg);
+  box-shadow: 0 12px 36px 0 rgba(56,189,248,0.22), 0 2px 12px 0 rgba(129,140,248,0.13);
+}
+.aurora-icon {
+  transition: filter 0.2s cubic-bezier(.4,0,.2,1), transform 0.2s cubic-bezier(.4,0,.2,1);
+}
+.aurora-card:hover .aurora-icon {
+  filter: drop-shadow(0 0 12px #38bdf8) drop-shadow(0 0 24px #818cf8);
+  transform: scale(1.13) rotate(-6deg);
+}
+
+.skill-bar-bg {
+  @apply w-full h-2 rounded-full bg-gray-700/60 dark:bg-gray-800/80 mt-2;
+  position: relative;
+  overflow: hidden;
+}
+.skill-bar-fill {
+  @apply h-2 rounded-full;
+  background: linear-gradient(90deg, #38bdf8 0%, #818cf8 100%);
+  transition: width 0.7s cubic-bezier(.4,0,.2,1);
+}
+.skill-tag {
+  @apply ml-2 px-2 py-0.5 rounded-full text-xs font-semibold;
+  background: linear-gradient(90deg, #1e293b 0%, #818cf8 100%);
+  color: #fff;
+  opacity: 0.85;
+}
+.skill-card {
+  @apply rounded-xl border border-gray-700/40 bg-gray-800/60 p-5 flex flex-col gap-2 shadow-md;
+  min-width: 220px;
+}

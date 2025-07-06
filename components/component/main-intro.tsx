@@ -16,7 +16,7 @@ const MainIntro = () => {
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             <WriterEffect str={message1} />
           </h2>
-          <div className="text-gray-500 dark:text-gray-400">
+          <div className="text-gray-400">
             <p>{message2}</p>
             <div className="flex gap-4 mt-4">
               <a
@@ -25,7 +25,7 @@ const MainIntro = () => {
                 rel="noopener noreferrer"
                 aria-label="GitHub"
               >
-                <FaGithub className="w-7 h-7 text-gray-800 hover:text-black transition-colors" />
+                <FaGithub className="w-7 h-7 text-gray-400 hover:text-white transition-colors" />
               </a>
               <a
                 href="https://www.instagram.com/lijar_00/"
@@ -56,22 +56,18 @@ const MainIntro = () => {
               ].map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 rounded-full bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 text-xs font-semibold text-blue-700 shadow-sm border border-blue-200 hover:from-blue-200 hover:to-pink-200 transition-colors cursor-pointer backdrop-blur-md"
+                  className="px-3 py-1 rounded-full bg-gray-800/50 text-xs font-semibold text-cyan-400 shadow-sm border border-gray-700/50 hover:bg-gray-700/50 transition-colors cursor-pointer"
                 >
                   {tag}
                 </span>
               ))}
             </div>
           </div>
-
-          {/* <Button className="mt-4" variant="outline">
-                Download Resume
-              </Button> */}
         </div>
         <div className="flex items-center justify-center">
           <Image
             alt="LI JAR"
-            className="rounded-full"
+            className="rounded-full border-4 border-gray-800/50 shadow-lg"
             height={400}
             src="/lijar.jpg"
             style={{
@@ -87,3 +83,4 @@ const MainIntro = () => {
 };
 
 export default MainIntro;
+

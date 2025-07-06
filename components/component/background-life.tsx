@@ -57,10 +57,10 @@ const Timeline = () => {
   ];
 
   return (
-    <div className="w-full max-w-2xl mx-auto py-8 px-2 sm:px-6 bg-gradient-to-br from-white via-blue-50 to-purple-100 rounded-2xl shadow-2xl">
+    <div className="w-full max-w-2xl mx-auto py-8 px-2 sm:px-6 bg-transparent rounded-2xl">
       <div className="relative pl-10 sm:pl-16">
         {/* Vertical Gradient Line */}
-        <div className="absolute top-0 left-3 sm:left-6 h-full w-1 bg-gradient-to-b from-blue-400 via-purple-400 to-pink-400 rounded-full"></div>
+        <div className="absolute top-0 left-3 sm:left-6 h-full w-1 bg-gradient-to-b from-cyan-400 via-blue-500 to-purple-500 rounded-full"></div>
         {events.map((event, index) => (
           <div
             key={index}
@@ -68,19 +68,19 @@ const Timeline = () => {
             style={{ animationDelay: `${index * 80}ms` }}
           >
             {/* Glowing Timeline Dot */}
-            <span className="absolute left-[-0.7rem] sm:left-[-1.1rem] flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400 shadow-lg animate-pulse z-10">
-              <span className="block w-3.5 h-3.5 bg-white rounded-full shadow-inner"></span>
+            <span className="absolute left-[-0.7rem] sm:left-[-1.1rem] flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-500 shadow-lg animate-pulse z-10">
+              <span className="block w-3.5 h-3.5 bg-gray-900 rounded-full shadow-inner"></span>
             </span>
             {/* Floating Year Badge */}
-            <span className="absolute -top-6 left-2 sm:left-6 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-blue-600 shadow-md border border-blue-100 z-10 animate-fade-in">
+            <span className="absolute -top-6 left-2 sm:left-6 bg-gray-800/50 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-cyan-400 shadow-md border border-gray-700/50 z-10 animate-fade-in">
               {event.time}
             </span>
             {/* Glassmorphism Event Card */}
-            <div className="bg-white/60 backdrop-blur-lg rounded-2xl shadow-xl px-6 py-5 w-full border border-gray-100 hover:shadow-2xl transition-shadow duration-300 relative z-10">
-              <h3 className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-purple-500 to-pink-500 text-lg mb-2 flex items-center gap-2">
+            <div className="bg-gray-900/50 backdrop-blur-lg rounded-2xl shadow-xl px-6 py-5 w-full border border-gray-800/50 hover:shadow-2xl transition-shadow duration-300 relative z-10">
+              <h3 className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 text-lg mb-2 flex items-center gap-2">
                 {event.title}
               </h3>
-              <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
                 {event.description}
               </p>
             </div>
@@ -92,3 +92,4 @@ const Timeline = () => {
 };
 
 export default Timeline;
+

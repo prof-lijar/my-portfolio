@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import  {Navbar}  from "@/components/component/nav-bar";
 import Footer from "@/components/component/footer";
+import Background from "@/components/component/background";
 
 const fontSans = FontSans({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -18,16 +19,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={cn(
-          "min-h-screen bg-background relative   font-sans antialiased",
+          "min-h-screen bg-background relative font-sans antialiased",
           fontSans.variable
         )}
       >
-        <div><Navbar/></div>
-        <div className="py-10 pb-[200px]">{children}</div>
-        <div className="mt-10 absolute inset-x-0  bottom-0"><Footer/></div>
+        <Background />
+        <div className="relative z-10">
+          <Navbar/>
+          <div className="py-10 pb-[200px]">{children}</div>
+          <div className="mt-10 absolute inset-x-0 bottom-0"><Footer/></div>
+        </div>
       </body>
     </html>
   );

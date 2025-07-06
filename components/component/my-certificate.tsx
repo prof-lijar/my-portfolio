@@ -12,10 +12,34 @@ import { Button } from '../ui/button'
 import Link from 'next/link'
 
 const MyCertificates = () => {
+  const certificates = [
+    {
+      imgSrc: '/javascript_DSA.png',
+      description: 'Legacy Javascript Algorithms and Data Structures',
+      verifyHref:
+        'https://www.freecodecamp.org/certification/lijar/javascript-algorithms-and-data-structures',
+      viewHref: '/javascript_DSA.png',
+    },
+    {
+      imgSrc: '/RWD.png',
+      description: 'Responsive Web Design',
+      verifyHref:
+        'https://www.freecodecamp.org/certification/lijar/responsive-web-design',
+      viewHref: '/RWD.png',
+    },
+    {
+      imgSrc: '/excel.jpg',
+      description: 'Microsoft Excel Expert (Office 2016)',
+      viewHref: '/excel.jpg',
+    },
+    { imgSrc: '/topik.png', description: 'TOPIK', viewHref: '/topik.png' },
+    { imgSrc: '/grade.jpg', description: 'Transcript', viewHref: '/grade.jpg' },
+  ]
+
   return (
     <section
       className="container mx-auto px-4 md:px-6 lg:px-8 mt-5"
-      id="projects"
+      id="certificates"
     >
       <div className="grid gap-8">
         <div className="grid gap-4 place-items-center">
@@ -24,109 +48,41 @@ const MyCertificates = () => {
           </h2>
         </div>
         <div className="grid grid-cols-1 items-center md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="mx-5">
-            <Image
-              src="/javascript_DSA.png"
-              alt="certificate"
-              width={350}
-              height={300}
-              className="mb-3"
-            />
-            <div className="flex items-start justify-between w-[350px]">
-              <CardDescription>
-                Legacy Javascript Algorithms and Data Structures
-              </CardDescription>
-              <Link
-                href={
-                  'https://www.freecodecamp.org/certification/lijar/javascript-algorithms-and-data-structures'
-                }
-              >
-                <span className="text-sm pl-5 w-full underline">verify</span>
-              </Link>
-              <a
-                href="/javascript_DSA.png"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span className="text-sm pl-5 w-full underline">view</span>
-              </a>
+          {certificates.map((cert, index) => (
+            <div
+              key={index}
+              className="bg-gray-900/50 border-gray-800/50 shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-300 rounded-lg p-4 flex flex-col items-center gap-2"
+            >
+              <Image
+                src={cert.imgSrc}
+                alt="certificate"
+                width={350}
+                height={300}
+                className="mb-3 rounded-lg"
+              />
+              <div className="flex items-start justify-between w-full">
+                <CardDescription>{cert.description}</CardDescription>
+                <div className="flex items-center gap-2">
+                  {cert.verifyHref && (
+                    <Link href={cert.verifyHref}>
+                      <span className="text-sm underline hover:text-cyan-400 transition-colors">
+                        verify
+                      </span>
+                    </Link>
+                  )}
+                  <a
+                    href={cert.viewHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span className="text-sm underline hover:text-cyan-400 transition-colors">
+                      view
+                    </span>
+                  </a>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="mx-5">
-            <Image
-              src="/RWD.png"
-              alt="certificate"
-              width={350}
-              height={300}
-              className="mb-3"
-            />
-            <div className="flex items-center justify-between w-[350px]">
-              <CardDescription>Responsive Web Design</CardDescription>
-
-              <Link
-                href={
-                  'https://www.freecodecamp.org/certification/lijar/responsive-web-design'
-                }
-              >
-                <span className="text-sm pl-5 w-full underline">verify</span>
-              </Link>
-              <a href="/RWD.png" target="_blank" rel="noopener noreferrer">
-                <span className="text-sm pl-5 w-full underline">view</span>
-              </a>
-            </div>
-          </div>
-          <div className="mx-5">
-            <Image
-              src="/excel.jpg"
-              alt="certificate"
-              width={350}
-              height={300}
-              className="mb-3"
-            />
-            <div className="flex items-center justify-between w-[350px]">
-              <CardDescription>
-                Microsoft Excel Expert (Office 2016)
-              </CardDescription>
-
-              <a href="/excel.jpg" target="_blank" rel="noopener noreferrer">
-                <span className="text-sm pl-5 w-full underline">view</span>
-              </a>
-            </div>
-          </div>
-
-          <div className="mx-5">
-            <Image
-              src="/topik.png"
-              alt="certificate"
-              width={350}
-              height={300}
-              className="mb-3"
-            />
-            <div className="flex items-center justify-between w-[350px]">
-              <CardDescription>TOPIK</CardDescription>
-
-              <a href="/topik.png" target="_blank" rel="noopener noreferrer">
-                <span className="text-sm pl-5 w-full underline">view</span>
-              </a>
-            </div>
-          </div>
-
-          <div className="mx-5">
-            <Image
-              src="/grade.jpg"
-              alt="certificate"
-              width={350}
-              height={300}
-              className="mb-3"
-            />
-            <div className="flex items-center justify-between w-[350px]">
-              <CardDescription>Transcript</CardDescription>
-
-              <a href="/grade.jpg" target="_blank" rel="noopener noreferrer">
-                <span className="text-sm pl-5 w-full underline">view</span>
-              </a>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
@@ -134,3 +90,4 @@ const MyCertificates = () => {
 }
 
 export default MyCertificates
+
