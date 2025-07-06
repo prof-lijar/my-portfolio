@@ -13,7 +13,7 @@ const ContactForm = () => {
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
             Get in Touch
           </h2>
-          <p className="text-gray-500 dark:text-gray-400 mt-4">
+          <p className="text-gray-400 mt-4">
             I am always excited to connect with new people and discuss potential
             collaborations. Feel free to reach out to me using the form below.
           </p>
