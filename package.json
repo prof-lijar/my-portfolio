@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "verify-youtube": "node scripts/verify-youtube-credentials.js",
+    "get-refresh-token": "node scripts/get-refresh-token.js"
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.1.0",
@@ -21,7 +23,10 @@
     "@vercel/postgres": "^0.9.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "dotenv": "^17.2.0",
     "embla-carousel-react": "^8.0.4",
+    "formidable": "^3.5.4",
+    "googleapis": "^153.0.0",
     "lucide-react": "^0.378.0",
     "next": "^14.2.4",
     "react": "^18",
@@ -34,6 +39,7 @@
     "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
+    "@types/formidable": "^3.4.5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
