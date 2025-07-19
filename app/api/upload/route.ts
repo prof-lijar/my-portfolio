@@ -88,6 +88,29 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    // Check file size before processing
+    const contentLength = req.headers.get("content-length");
+    const fileSizeInBytes = contentLength ? parseInt(contentLength) : 0;
+    const fileSizeInMB = fileSizeInBytes / (1024 * 1024);
+
+    console.log(`Request size: ${fileSizeInMB.toFixed(2)} MB`);
+
+    // Vercel has a 4.5MB limit for serverless functions
+    if (fileSizeInMB > 4) {
+      return NextResponse.json(
+        {
+          error:
+            "File too large for direct upload. Use client-side upload instead.",
+          details: `File size ${fileSizeInMB.toFixed(
+            2
+          )}MB exceeds Vercel's 4.5MB limit`,
+          code: 413,
+          suggestion: "Use the client-side upload method for large files",
+        },
+        { status: 413 }
+      );
+    }
+
     // Parse form data manually instead of using formidable
     const data = await parseFormData(req);
 
@@ -107,8 +130,8 @@ export async function POST(req: NextRequest) {
     );
 
     // Check file size
-    const fileSizeInMB = file.size / (1024 * 1024);
-    console.log(`File size: ${fileSizeInMB.toFixed(2)} MB`);
+    const actualFileSizeInMB = file.size / (1024 * 1024);
+    console.log(`File size: ${actualFileSizeInMB.toFixed(2)} MB`);
 
     // Verify file exists and is readable
     if (!fs.existsSync(file.filepath)) {
@@ -199,8 +222,8 @@ export async function POST(req: NextRequest) {
       videoId: res.data.id,
       url: `https://www.youtube.com/watch?v=${res.data.id}`,
       uploadTime: uploadDuration,
-      fileSize: fileSizeInMB,
-      uploadSpeed: (fileSizeInMB / uploadDuration).toFixed(2),
+      fileSize: actualFileSizeInMB,
+      uploadSpeed: (actualFileSizeInMB / uploadDuration).toFixed(2),
     });
   } catch (error: any) {
     console.error("Upload error details:", {

@@ -20,6 +20,7 @@ export default function UploadPage() {
   const [uploadProgress, setUploadProgress] = useState<string>("");
   const [uploadSpeed, setUploadSpeed] = useState<string>("");
   const [uploadPercentage, setUploadPercentage] = useState<number>(0);
+  const [useClientUpload, setUseClientUpload] = useState<boolean>(false);
   const abortControllerRef = useRef<AbortController | null>(null);
   const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -42,25 +43,23 @@ export default function UploadPage() {
         setTitle(fileName);
       }
 
-      // Warn about large files
-      if (fileSizeInMB > 50) {
+      // Check if we need client-side upload for large files
+      if (fileSizeInMB > 4) {
+        setUseClientUpload(true);
         setError(
           `Large file detected (${fileSizeInMB.toFixed(
             2
-          )} MB). Upload may take several minutes.`
+          )} MB). Will use client-side upload to bypass Vercel limits.`
         );
+      } else {
+        setUseClientUpload(false);
+        setError(null);
       }
     }
   };
 
   const handleUpload = async () => {
     if (!videoFile) return;
-
-    const formData = new FormData();
-    formData.append("video", videoFile);
-    formData.append("title", title || "Untitled Video");
-    formData.append("description", description || "");
-    formData.append("tags", tags || "");
 
     setUploading(true);
     setError(null);
@@ -99,15 +98,33 @@ export default function UploadPage() {
         }
       }, 1000);
 
-      // Set a longer timeout for large files
-      const timeout = Math.max(300000, videoFile.size * 10); // At least 5 minutes
-      console.log(`Setting client timeout to ${timeout / 1000} seconds`);
+      let res;
 
-      const res = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-        signal: abortControllerRef.current.signal,
-      });
+      if (useClientUpload) {
+        // For large files, we'll need to implement client-side YouTube upload
+        // This requires additional setup with YouTube API client library
+        setError(
+          "Client-side upload not yet implemented. Please use files under 4MB for now."
+        );
+        return;
+      } else {
+        // Standard server-side upload for smaller files
+        const formData = new FormData();
+        formData.append("video", videoFile);
+        formData.append("title", title || "Untitled Video");
+        formData.append("description", description || "");
+        formData.append("tags", tags || "");
+
+        // Set a longer timeout for large files
+        const timeout = Math.max(300000, videoFile.size * 10); // At least 5 minutes
+        console.log(`Setting client timeout to ${timeout / 1000} seconds`);
+
+        res = await fetch("/api/upload", {
+          method: "POST",
+          body: formData,
+          signal: abortControllerRef.current.signal,
+        });
+      }
 
       if (progressIntervalRef.current) {
         clearInterval(progressIntervalRef.current);
@@ -196,6 +213,10 @@ export default function UploadPage() {
             onChange={handleFileChange}
             className="w-full p-2 border border-gray-300 rounded"
           />
+          <p className="text-xs text-gray-500 mt-1">
+            Maximum file size: 4MB for server upload, larger files require
+            client-side upload
+          </p>
         </div>
 
         {/* Video Information */}
@@ -260,6 +281,11 @@ export default function UploadPage() {
             <p className="text-xs text-gray-600 mt-1">
               Estimated upload time: {getEstimatedTime(videoFile.size)}
             </p>
+            {useClientUpload && (
+              <p className="text-xs text-blue-600 mt-1">
+                ⚠️ Large file - will use client-side upload
+              </p>
+            )}
           </div>
         )}
 
