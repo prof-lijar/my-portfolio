@@ -10,15 +10,9 @@ interface UploadResult {
 }
 
 interface UploadSession {
-  uploadUrl: string;
   accessToken: string;
   metadata: any;
-  fileInfo: {
-    name: string;
-    size: number;
-    mimeType: string;
-    sizeInMB: number;
-  };
+  uploadUrl: string;
   message: string;
 }
 
@@ -82,8 +76,8 @@ export default function UploadPage() {
   };
 
   const createUploadSession = async (file: File): Promise<UploadSession> => {
+    // Send only metadata to server (no file)
     const formData = new FormData();
-    formData.append("video", file);
     formData.append("title", title || "Untitled Video");
     formData.append("description", description || "");
     formData.append("tags", tags || "");
@@ -95,7 +89,7 @@ export default function UploadPage() {
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.error || "Failed to create upload session");
+      throw new Error(errorData.error || "Failed to get authentication");
     }
 
     return await response.json();
@@ -109,16 +103,17 @@ export default function UploadPage() {
       const startTime = Date.now();
       let lastProgressUpdate = startTime;
 
+      console.log("Starting multipart upload to YouTube...");
+      console.log("Upload URL:", session.uploadUrl);
+
       // Create multipart form data for YouTube API
       const formData = new FormData();
 
-      // Add metadata as JSON
-      formData.append(
-        "metadata",
-        new Blob([JSON.stringify(session.metadata)], {
-          type: "application/json",
-        })
-      );
+      // Add metadata as JSON blob
+      const metadataBlob = new Blob([JSON.stringify(session.metadata)], {
+        type: "application/json",
+      });
+      formData.append("metadata", metadataBlob);
 
       // Add video file
       formData.append("media", file);
@@ -150,33 +145,51 @@ export default function UploadPage() {
 
       // Handle upload completion
       xhr.addEventListener("load", () => {
+        console.log("Upload response status:", xhr.status);
+        console.log("Upload response:", xhr.responseText);
+
         if (xhr.status === 200) {
-          const response = JSON.parse(xhr.responseText);
-          const endTime = Date.now();
-          const uploadDuration = (endTime - startTime) / 1000;
-          const fileSizeInMB = file.size / (1024 * 1024);
+          try {
+            const response = JSON.parse(xhr.responseText);
+            const endTime = Date.now();
+            const uploadDuration = (endTime - startTime) / 1000;
+            const fileSizeInMB = file.size / (1024 * 1024);
 
-          const result: UploadResult = {
-            videoId: response.id,
-            url: `https://www.youtube.com/watch?v=${response.id}`,
-            uploadTime: uploadDuration,
-            fileSize: fileSizeInMB,
-            uploadSpeed: (fileSizeInMB / uploadDuration).toFixed(2),
-          };
+            const result: UploadResult = {
+              videoId: response.id,
+              url: `https://www.youtube.com/watch?v=${response.id}`,
+              uploadTime: uploadDuration,
+              fileSize: fileSizeInMB,
+              uploadSpeed: (fileSizeInMB / uploadDuration).toFixed(2),
+            };
 
-          resolve(result);
+            resolve(result);
+          } catch (parseError) {
+            console.error("Failed to parse response:", parseError);
+            reject(
+              new Error(
+                `Upload succeeded but failed to parse response: ${xhr.responseText}`
+              )
+            );
+          }
         } else {
-          reject(new Error(`Upload failed: ${xhr.status} ${xhr.statusText}`));
+          console.error("Upload failed with status:", xhr.status);
+          console.error("Response:", xhr.responseText);
+          reject(
+            new Error(`Upload failed: ${xhr.status} - ${xhr.responseText}`)
+          );
         }
       });
 
-      xhr.addEventListener("error", () => {
+      xhr.addEventListener("error", (error) => {
+        console.error("Upload error:", error);
         reject(new Error("Upload failed"));
       });
 
-      // Start upload to YouTube using server-provided URL and token
+      // Start the multipart upload
       xhr.open("POST", session.uploadUrl);
       xhr.setRequestHeader("Authorization", `Bearer ${session.accessToken}`);
+      // Let the browser set the correct Content-Type with boundary for multipart
       xhr.send(formData);
     });
   };
@@ -196,10 +209,10 @@ export default function UploadPage() {
         throw new Error("Server not ready");
       }
 
-      setUploadProgress("Creating upload session with server...");
-      setDebugInfo("Step 1: Creating upload session...");
+      setUploadProgress("Getting authentication from server...");
+      setDebugInfo("Step 1: Getting authentication...");
 
-      // Step 1: Create upload session with server
+      // Step 1: Get authentication from server (no file sent)
       const session = await createUploadSession(videoFile);
 
       setDebugInfo("Step 2: Uploading directly to YouTube...");
@@ -262,14 +275,14 @@ export default function UploadPage() {
       {/* Hybrid Upload Info */}
       <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded">
         <h3 className="font-medium text-green-800 mb-2">
-          🚀 Hybrid Upload System
+          🚀 True Hybrid Upload System
         </h3>
         <p className="text-sm text-green-600 mb-2">
-          ✓ Server creates authenticated upload session
+          ✓ Server provides authentication only
           <br />
           ✓ Client uploads directly to YouTube
           <br />
-          ✓ No file size limits - bypasses Vercel restrictions
+          ✓ No file size limits - file never touches server
           <br />✓ Secure - credentials stay on server
         </p>
         <p className="text-xs text-green-500">{debugInfo}</p>
@@ -288,7 +301,7 @@ export default function UploadPage() {
             className="w-full p-2 border border-gray-300 rounded"
           />
           <p className="text-xs text-gray-500 mt-1">
-            Any file size supported - hybrid upload system
+            Any file size supported - true hybrid upload system
           </p>
         </div>
 
@@ -355,7 +368,7 @@ export default function UploadPage() {
               Estimated upload time: {getEstimatedTime(videoFile.size)}
             </p>
             <p className="text-xs text-green-600 mt-1">
-              🚀 Hybrid upload - server auth + client upload!
+              True hybrid upload: Server auth + Direct YouTube upload
             </p>
           </div>
         )}
@@ -394,7 +407,7 @@ export default function UploadPage() {
               <p className="text-xs text-green-600 mt-1">{uploadSpeed}</p>
             )}
             <p className="text-xs text-green-600 mt-1">
-              Hybrid upload: Server auth + Direct YouTube upload
+              True hybrid upload: Server auth + Direct YouTube upload
             </p>
           </div>
         )}
@@ -402,9 +415,20 @@ export default function UploadPage() {
         {/* Error Display */}
         {error && (
           <div className="p-3 bg-red-50 border border-red-200 rounded">
-            <p className="text-sm text-red-800">
+            <p className="text-sm text-red-800 mb-2">
               <strong>Error:</strong> {error}
             </p>
+            {error.includes("upload limit exceeded") && (
+              <div className="text-xs text-red-700 bg-red-100 p-2 rounded mt-2">
+                <strong>How to fix:</strong>
+                <ul className="list-disc list-inside mt-1">
+                  <li>Wait until tomorrow (quotas reset daily)</li>
+                  <li>Check your YouTube account for upload limits</li>
+                  <li>Delete some test videos from YouTube Studio</li>
+                  <li>Use a different YouTube account for testing</li>
+                </ul>
+              </div>
+            )}
           </div>
         )}
 
@@ -421,7 +445,7 @@ export default function UploadPage() {
               <br />
               Average speed: {result.uploadSpeed} MB/s
               <br />
-              Method: Hybrid upload (server auth + client upload)
+              Method: True hybrid upload (server auth + client upload)
             </p>
             <a
               href={result.url}
