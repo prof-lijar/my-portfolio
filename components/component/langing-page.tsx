@@ -1,12 +1,12 @@
-import Link from 'next/link'
+import Link from "next/link";
 
-import SubNav from './subNav'
+import SubNav from "./subNav";
 
-import AboutPage from '@/app/about/page'
-import MySkills from './myskills'
-import MyProjects from './my-projects'
-import ContactForm from './contact-form'
-import MainIntro from './main-intro'
+import AboutPage from "@/app/about/page";
+import MySkills from "./myskills";
+import MyProjects from "./my-projects";
+import ContactForm from "./contact-form";
+import MainIntro from "./main-intro";
 
 export function LandingPage() {
   return (
@@ -18,9 +18,9 @@ export function LandingPage() {
         <section className="z-20">
           <SubNav />
         </section>
-        <section>
+        {/* <section>
           <MySkills />
-        </section>
+        </section> */}
 
         <section>
           <MyProjects />
@@ -31,5 +31,5 @@ export function LandingPage() {
         </section>
       </main>
     </>
-  )
+  );
 }

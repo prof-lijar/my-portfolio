@@ -5,6 +5,8 @@ import {
   SheetClose,
   SheetContent,
   Sheet,
+  SheetHeader,
+  SheetTitle,
 } from "@/components/ui/sheet";
 import { JSX, SVGProps } from "react";
 
@@ -51,6 +53,9 @@ export function Navbar() {
           </Button>
         </SheetTrigger>
         <SheetContent side="right">
+          <SheetHeader>
+            <SheetTitle>Navigation Menu</SheetTitle>
+          </SheetHeader>
           <div className="flex h-full flex-col justify-between p-6">
             <nav className="grid gap-4">
               {menus.map((menu) => {
