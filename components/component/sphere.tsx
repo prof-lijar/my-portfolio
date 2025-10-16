@@ -26,7 +26,8 @@ const Sphere = () => {
   const autoRotate = useRef(true);
 
   useEffect(() => {
-    if (!mountRef.current) return;
+    const mountElement = mountRef.current;
+    if (!mountElement) return;
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -37,7 +38,7 @@ const Sphere = () => {
     // Camera setup
     const camera = new THREE.PerspectiveCamera(
       75,
-      mountRef.current.clientWidth / mountRef.current.clientHeight,
+      mountElement.clientWidth / mountElement.clientHeight,
       0.1,
       1000
     );
@@ -46,12 +47,9 @@ const Sphere = () => {
 
     // Renderer setup
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(
-      mountRef.current.clientWidth,
-      mountRef.current.clientHeight
-    );
+    renderer.setSize(mountElement.clientWidth, mountElement.clientHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
-    mountRef.current.appendChild(renderer.domElement);
+    mountElement.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
     // Create invisible sphere for positioning
@@ -180,10 +178,10 @@ const Sphere = () => {
 
     // Handle resize
     const handleResize = () => {
-      if (!mountRef.current || !camera || !renderer) return;
+      if (!mountElement || !camera || !renderer) return;
 
-      const width = mountRef.current.clientWidth;
-      const height = mountRef.current.clientHeight;
+      const width = mountElement.clientWidth;
+      const height = mountElement.clientHeight;
 
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
@@ -206,8 +204,9 @@ const Sphere = () => {
       canvas.removeEventListener("touchend", handleMouseUp);
       window.removeEventListener("resize", handleResize);
 
-      if (mountRef.current && renderer.domElement) {
-        mountRef.current.removeChild(renderer.domElement);
+      // Use the captured mount element to avoid stale closure
+      if (mountElement && renderer.domElement) {
+        mountElement.removeChild(renderer.domElement);
       }
 
       scene.clear();
