@@ -20,8 +20,20 @@ interface props {
 }
 
 const BlogPostCard: React.FC<props> = ({ id, author, title, content }) => {
-  // Clean content by removing HTML tags for preview
-  const cleanContent = content.replace(/<[^>]*>/g, "").trim();
+  // Clean content by removing formatting markers and HTML tags for preview
+  let cleanContent = content
+    .replace(/\*\*(.*?)\*\*/g, "$1") // Remove bold markers
+    .replace(/\*(.*?)\*/g, "$1") // Remove italic markers
+    .replace(/`([^`]+)`/g, "$1") // Remove inline code markers
+    .replace(/```[\s\S]*?```/g, "") // Remove code blocks
+    .replace(/⸻+/g, "") // Remove horizontal rules
+    .replace(/•\s*/g, "") // Remove bullet points
+    .replace(/^\d+\.\s*/gm, "") // Remove numbered list markers
+    .replace(/^\d+-\d+\.\s*/gm, "") // Remove subsection markers
+    .replace(/<[^>]*>/g, "") // Remove any HTML tags
+    .replace(/\n+/g, " ") // Replace line breaks with spaces
+    .trim();
+
   const previewContent =
     cleanContent.length > 150
       ? cleanContent.substring(0, 150) + "..."

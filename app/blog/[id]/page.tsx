@@ -1,5 +1,6 @@
 import CalculateReadingTime from "@/components/component/calculate-reading-time";
 import { fetchBlogById } from "@/lib/data";
+import { formatContentToHtml } from "@/lib/format-content";
 
 export default async function Page({ params }: { params: { id: string } }) {
   const id = params.id;
@@ -7,6 +8,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   const blog = await fetchBlogById(id);
   const title = blog.title;
   const content = blog.content;
+  const formattedContent = formatContentToHtml(content);
 
   return (
     <section className="w-full overflow-hidden">
@@ -19,14 +21,14 @@ export default async function Page({ params }: { params: { id: string } }) {
           </span>
         </div>
         <div
-          className="prose prose-invert max-w-none break-words overflow-wrap-anywhere w-full overflow-hidden"
+          className="prose prose-invert max-w-none break-words overflow-wrap-anywhere w-full overflow-hidden blog-content"
           style={{
             wordBreak: "break-word",
             overflowWrap: "anywhere",
             maxWidth: "100%",
             overflowX: "hidden",
           }}
-          dangerouslySetInnerHTML={{ __html: content }}
+          dangerouslySetInnerHTML={{ __html: formattedContent }}
         />
       </div>
     </section>
