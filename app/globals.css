@@ -55,11 +55,16 @@
   }
   body {
     @apply bg-background text-foreground;
+    overflow-x: hidden;
+  }
+  html {
+    overflow-x: hidden;
   }
 }
 
 @keyframes gradient-xy {
-  0%, 100% {
+  0%,
+  100% {
     background-size: 400% 400%;
     background-position: 0% 50%;
   }
@@ -70,7 +75,8 @@
 }
 
 @keyframes blob-1 {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(-50%, -50%) scale(1);
   }
   50% {
@@ -79,7 +85,8 @@
 }
 
 @keyframes blob-2 {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(-50%, -50%) scale(1);
   }
   50% {
@@ -88,7 +95,8 @@
 }
 
 @keyframes blob-3 {
-  0%, 100% {
+  0%,
+  100% {
     transform: translate(-50%, -50%) scale(1);
   }
   50% {
@@ -97,7 +105,11 @@
 }
 
 .bg-grid-pattern {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.1) 1px,
+      transparent 1px
+    ),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
   background-size: 20px 20px;
 }
@@ -120,29 +132,36 @@
 
 /* Add fade-in animation for cards */
 @keyframes fade-in {
-  from { opacity: 0; transform: translateY(16px);}
-  to { opacity: 1; transform: translateY(0);}
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .animate-fade-in {
-  animation: fade-in 0.6s cubic-bezier(.4,0,.2,1) both;
+  animation: fade-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
 /* Add this at the end of your file */
 
 .card-glass {
-  background: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 0.85rem;
-  box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.10);
+  box-shadow: 0 2px 12px 0 rgba(31, 38, 135, 0.1);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   padding: 1rem 0.5rem;
-  transition: transform 0.2s cubic-bezier(.4,0,.2,1), box-shadow 0.2s cubic-bezier(.4,0,.2,1);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .card-glass:hover {
   transform: translateY(-2px) scale(1.03) rotate(-0.5deg);
   box-shadow: 0 6px 24px 0 rgba(31, 38, 135, 0.18);
-  background: rgba(255,255,255,0.18);
+  background: rgba(255, 255, 255, 0.18);
 }
 
 .aurora-card {
@@ -151,8 +170,10 @@
   padding: 1.1rem 0.5rem 0.7rem 0.5rem;
   background: rgba(30, 41, 59, 0.85);
   overflow: hidden;
-  box-shadow: 0 4px 24px 0 rgba(56,189,248,0.13), 0 1.5px 8px 0 rgba(0,0,0,0.06);
-  transition: transform 0.18s cubic-bezier(.4,0,.2,1), box-shadow 0.22s cubic-bezier(.4,0,.2,1);
+  box-shadow: 0 4px 24px 0 rgba(56, 189, 248, 0.13),
+    0 1.5px 8px 0 rgba(0, 0, 0, 0.06);
+  transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.22s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 0;
 }
 .aurora-card::before {
@@ -172,8 +193,12 @@
   animation: aurora-move 6s linear infinite alternate;
 }
 @keyframes aurora-move {
-  0% { transform: scale(1) rotate(0deg);}
-  100% { transform: scale(1.15) rotate(12deg);}
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1.15) rotate(12deg);
+  }
 }
 .aurora-card > * {
   position: relative;
@@ -181,10 +206,12 @@
 }
 .aurora-card:hover {
   transform: translateY(-6px) scale(1.06) rotate(-1deg);
-  box-shadow: 0 12px 36px 0 rgba(56,189,248,0.22), 0 2px 12px 0 rgba(129,140,248,0.13);
+  box-shadow: 0 12px 36px 0 rgba(56, 189, 248, 0.22),
+    0 2px 12px 0 rgba(129, 140, 248, 0.13);
 }
 .aurora-icon {
-  transition: filter 0.2s cubic-bezier(.4,0,.2,1), transform 0.2s cubic-bezier(.4,0,.2,1);
+  transition: filter 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .aurora-card:hover .aurora-icon {
   filter: drop-shadow(0 0 12px #38bdf8) drop-shadow(0 0 24px #818cf8);
@@ -199,7 +226,7 @@
 .skill-bar-fill {
   @apply h-2 rounded-full;
   background: linear-gradient(90deg, #38bdf8 0%, #818cf8 100%);
-  transition: width 0.7s cubic-bezier(.4,0,.2,1);
+  transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .skill-tag {
   @apply ml-2 px-2 py-0.5 rounded-full text-xs font-semibold;
@@ -210,4 +237,56 @@
 .skill-card {
   @apply rounded-xl border border-gray-700/40 bg-gray-800/60 p-5 flex flex-col gap-2 shadow-md;
   min-width: 220px;
+}
+
+/* Fix text overflow in blog posts - Aggressive approach */
+.prose {
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+.prose * {
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: 100% !important;
+  word-break: break-word !important;
+  overflow-x: hidden !important;
+}
+
+.prose p,
+.prose li,
+.prose div,
+.prose span,
+.prose strong,
+.prose em,
+.prose code,
+.prose pre {
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+/* Handle pre and code blocks specifically */
+.prose pre,
+.prose code {
+  white-space: pre-wrap !important;
+  word-break: break-all !important;
+  overflow-x: auto !important;
+  max-width: 100% !important;
+}
+
+/* Ensure all text elements respect container bounds */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  max-width: 100% !important;
 }
