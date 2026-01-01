@@ -1,7 +1,9 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import JavascriptIcon from '@/resource/js.svg';
 import JavaIcon from '@/resource/java.svg';
 import PythonIcon from '@/resource/python.svg';
 import FlaskIcon from '@/resource/flask.svg';
@@ -79,72 +81,118 @@ const projects = [
 ];
 
 export default function KaistShowcase() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
+  useEffect(() => {
+    setIsVideoOpen(true);
+  }, []);
+
+  const handleCloseVideo = () => {
+    setIsVideoOpen(false);
+  };
+
   return (
-    <section className="min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 py-12">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        <div className="mb-12 text-center">
-          <h1 className="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-            Project Showcase
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-gray-400">
-            A collection of projects demonstrating my skills in software development,
-            AI/ML, and innovative solutions. Each project represents my commitment to
-            solving real-world problems through technology.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {projects.map((project) => (
-            <Card
-              key={project.id}
-              className="bg-gray-900/50 border-gray-800/50 shadow-lg transition-all duration-300 hover:shadow-cyan-500/20 hover:border-cyan-500/30"
+    <>
+      {isVideoOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
+          <div className="relative w-full max-w-4xl">
+            <button
+              onClick={handleCloseVideo}
+              className="absolute -top-10 right-0 text-white hover:text-gray-300 transition-colors"
             >
-              <CardHeader>
-                <div className="mb-2">
-                  <span className="inline-block rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-400">
-                    {project.category}
-                  </span>
-                </div>
-                <CardTitle className="text-xl text-white">{project.title}</CardTitle>
-                <CardDescription className="text-gray-400">
-                  {project.description}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="mb-4">
-                  <h4 className="mb-2 text-sm font-semibold text-gray-300">Key Highlights:</h4>
-                  <ul className="space-y-1">
-                    {project.highlights.map((highlight, index) => (
-                      <li key={index} className="flex items-start gap-2 text-sm text-gray-400">
-                        <span className="mt-1 block h-1.5 w-1.5 rounded-full bg-cyan-500" />
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="flex flex-wrap items-center gap-2 border-t border-gray-800/50 pt-4">
-                  {project.icons.map((icon, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-1 rounded-md bg-gray-800/50 px-2 py-1 text-xs text-gray-300"
-                    >
-                      {typeof icon === 'string' ? <span>{icon}</span> : icon}
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+              <svg className="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <div className="aspect-video w-full overflow-hidden rounded-lg shadow-2xl">
+              <iframe
+                width="100%"
+                height="100%"
+                src="https://www.youtube.com/embed/UF8uR6Z6KLc?autoplay=1"
+                title="Steve Jobs' Stanford Commencement Speech"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="border-0"
+              />
+            </div>
+          </div>
         </div>
+      )}
 
-        <div className="mt-16 text-center">
-          <Link href="/project/1">
-            <Button variant="outline" size="lg" className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10">
-              View Project Details
+      <section className="min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 py-12">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+          <div className="mb-12 text-center">
+            <h1 className="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
+              Project Showcase
+            </h1>
+            <p className="mx-auto max-w-2xl text-lg text-gray-400">
+              A collection of projects demonstrating my skills in software development,
+              AI/ML, and innovative solutions. Each project represents my commitment to
+              solving real-world problems through technology.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project) => (
+              <Card
+                key={project.id}
+                className="bg-gray-900/50 border-gray-800/50 shadow-lg transition-all duration-300 hover:shadow-cyan-500/20 hover:border-cyan-500/30"
+              >
+                <CardHeader>
+                  <div className="mb-2">
+                    <span className="inline-block rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-400">
+                      {project.category}
+                    </span>
+                  </div>
+                  <CardTitle className="text-xl text-white">{project.title}</CardTitle>
+                  <CardDescription className="text-gray-400">
+                    {project.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="mb-4">
+                    <h4 className="mb-2 text-sm font-semibold text-gray-300">Key Highlights:</h4>
+                    <ul className="space-y-1">
+                      {project.highlights.map((highlight, index) => (
+                        <li key={index} className="flex items-start gap-2 text-sm text-gray-400">
+                          <span className="mt-1 block h-1.5 w-1.5 rounded-full bg-cyan-500" />
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="flex flex-wrap items-center gap-2 border-t border-gray-800/50 pt-4">
+                    {project.icons.map((icon, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center gap-1 rounded-md bg-gray-800/50 px-2 py-1 text-xs text-gray-300"
+                      >
+                        {typeof icon === 'string' ? <span>{icon}</span> : icon}
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-16 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => setIsVideoOpen(true)}
+              className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10"
+            >
+              Watch Motivation Video
             </Button>
-          </Link>
+            <Link href="/project/1">
+              <Button variant="outline" size="lg" className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10">
+                View Project Details
+              </Button>
+            </Link>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
