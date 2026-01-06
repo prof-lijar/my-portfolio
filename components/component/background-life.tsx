@@ -17,7 +17,7 @@ const Timeline = () => {
       title: "Participant",
       time: "2016 August",
       description:
-        "4th China Asean Youth Cultural Exchange Festival held in Xi'an",
+        "4th Asean-China Youth Cultural Exchange Festival held in Xi'an, China",
     },
     {
       title: "Started University",
@@ -50,9 +50,15 @@ const Timeline = () => {
     },
     {
       title: "Start-Up club, Mentoring & Teaching",
-      time: "2023~",
+      time: "2023~2025",
       description:
-        "Teaching programming language mainly Html,Css, javaScript, React, Next.js, java, python to junior students, sharing knowledge information and leading projects",
+        "Teaching programming language mainly Html,Css, javaScript, React, Next.js, java, python to junior students, sharing knowledge information and project Management. Develope LLM Aplications",
+    },
+    {
+      title: "Software Engineer | HuemoneLab",
+      time: "2025~",
+      description:
+        "Developing Gyopool AI, AI platform for teachers and students",
     },
   ];
 
