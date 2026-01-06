@@ -8,6 +8,7 @@ import {
   type CarouselApi,
 } from '@/components/ui/carousel';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const activities = [
   {
@@ -18,6 +19,7 @@ const activities = [
     description: "4th China ASEAN-China Youth Cultural Exchange Festival held in Xi'an, China",
     category: null,
     image: "/hello-kaist/4th_asean_china_cultural_exchange_festival.jpg",
+    link: null,
   },
   {
     id: 2,
@@ -27,6 +29,7 @@ const activities = [
     description: 'Maker Tour 2020, Myanmar',
     category: null,
     image: '/hello-kaist/maker_tour_2020.jpg',
+    link: "https://www.facebook.com/actkengtung/posts/pfbid0jZWu9gHUQKvvEGtjooMWhSkkvGoVz2MWxAuop7zn9ALKzAcFY4JWb85CmCQNGhrJl",
   },
   {
     id: 3,
@@ -36,6 +39,7 @@ const activities = [
     description: 'Local Youth Empowering Organization, Myanmar',
     category: null,
     image: '/hello-kaist/aim_and_community_transformation.jpg',
+    link: "https://www.facebook.com/actkengtung/posts/pfbid02kJysUMQiJNLJuQYvykyM4U1R2xKTw1adQ4y4vo8uUrrVtfoLS2Qq2jkn57XAKkxel",
   },
   {
     id: 4,
@@ -45,6 +49,7 @@ const activities = [
     description: 'International Volunteer Program, Indonesia',
     category: null,
     image: '/hello-kaist/palembang_indonesia.jpeg',
+    link: null,
   },
 ];
 
@@ -128,6 +133,11 @@ export default function ExtracurricularActivities() {
                       <h3 className="text-xl font-bold text-white mb-1">{activity.organization}</h3>
                       <p className="text-cyan-400/80 font-medium text-sm mb-3">{activity.role}</p>
                       <p className="text-gray-400 text-sm mb-4">{activity.description}</p>
+                      {activity.link && (
+                        <Link href={activity.link} target="_blank" rel="noopener noreferrer" className="text-cyan-400/80 font-medium text-sm mb-3">
+                          View More
+                        </Link>
+                      )}
                       
                     </div>
                   </div>
