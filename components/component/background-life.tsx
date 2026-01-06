@@ -23,7 +23,7 @@ const Timeline = () => {
       title: "Started University",
       time: "2017",
       description:
-        "Mandalay University of Technology. Major : Electrical Power Engineering",
+        "Mandalay Technical University. Major : Electrical Power Engineering",
     },
     {
       title: "Start Up",
