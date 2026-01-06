@@ -11,7 +11,7 @@ const Footer = () => {
           </Avatar>
           <span className="font-semibold">LI JAR | Portfolio</span>
         </div>
-        <p>© 2025 LI JAR. All rights reserved.</p>
+        <p>© 2026 LI JAR. All rights reserved.</p>
       </div>
     </footer>
   );
