@@ -29,7 +29,7 @@ const Timeline = () => {
       title: "Start Up",
       time: "2021",
       description:
-        "Started a small food ordering and delivery start up business with three other friends. Role : Web Developer | Manager",
+        "Started a small food ordering and delivery start up business with three other friends. Role : Co-Founder | CEO",
     },
     {
       title: "Started College",
@@ -49,7 +49,7 @@ const Timeline = () => {
       description: "Metaverse EXPO 2023 Seoul , Smart Tech Korea 2024",
     },
     {
-      title: "Teaching & Sharing",
+      title: "Start-Up club, Mentoring & Teaching",
       time: "2023~",
       description:
         "Teaching programming language mainly Html,Css, javaScript, React, Next.js, java, python to junior students, sharing knowledge information and leading projects",
