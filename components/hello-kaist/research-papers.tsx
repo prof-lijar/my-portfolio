@@ -9,7 +9,7 @@ const researchPapers = [
   {
     id: 1,
     title: 'VR Shopping, Fitting, and Recommendation Service Based on Interactive Interface',
-    authors: ['LI JAR', 'Sook Youn Kwon'],
+    authors: ['Sook Youn Kwon, LI JAR'],
     venue: 'KSII The 16th International Conference on Internet (ICONI) 2024, Taiwan',
     year: 2024,
     type: 'Conference',
