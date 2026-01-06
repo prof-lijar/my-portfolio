@@ -138,13 +138,6 @@ export default function KaistShowcase() {
           ))}
         </div>
 
-        <div className="mt-16 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <Link href="/project/1">
-            <Button variant="outline" size="lg" className="border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10">
-              View Project Details
-            </Button>
-          </Link>
-        </div>
       </div>
     </section>
   );
