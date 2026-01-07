@@ -51,7 +51,7 @@ const milestones = [
     description: 'AI platform for teachers and students | Project Founding Member, Software Engineer',
     category: 'Education',
     image: '/hello-kaist/gyopool_ai.png',
-    achievements: ['Seed Infestment', '4000+ users'],
+    achievements: ['Seed Investment', '4000+ users'],
     layout: 'right',
     link: 'https://www.gyopool.com/',
   },
