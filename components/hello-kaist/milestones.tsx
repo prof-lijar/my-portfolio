@@ -15,7 +15,7 @@ const milestones = [
     description: 'Started a small food ordering and delivery start up business with three other friends | Co-Founder, CEO',
     category: 'Start Up',
     image: '/hello-kaist/nama.png', 
-    achievements: ['40 Restaurants', '5000+ Orders', '150,000,000 MMK Sales/Month'],
+    achievements: ['40 Restaurants', '5000+ Orders', '150,000,00 MMK Sales/Month'],
     layout: 'left',
     link: 'https://nama-ecom.netlify.app/',
   },
