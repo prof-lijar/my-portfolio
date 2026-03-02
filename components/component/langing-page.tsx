@@ -7,6 +7,7 @@ import MySkills from "./myskills";
 import MyProjects from "./my-projects";
 import ContactForm from "./contact-form";
 import MainIntro from "./main-intro";
+import HelloKaistBanner from "./hello-kaist-banner";
 
 export function LandingPage() {
   return (
@@ -18,9 +19,10 @@ export function LandingPage() {
         <section className="z-20">
           <SubNav />
         </section>
-        {/* <section>
-          <MySkills />
-        </section> */}
+
+        <section>
+          <HelloKaistBanner />
+        </section>
 
         <section>
           <MyProjects />

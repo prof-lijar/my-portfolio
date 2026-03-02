@@ -15,6 +15,7 @@ import {
 
 const menus = [
   { name: "Portfolio", href: "/portfolio" },
+  { name: "Hello KAIST", href: "/hello-kaist" },
   { name: "About Me", href: "/about" },
   { name: "Blog", href: "/blog" },
 ];
