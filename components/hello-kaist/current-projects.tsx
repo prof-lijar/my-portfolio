@@ -104,7 +104,7 @@ export default function CurrentProjects() {
             },
           });
         } catch {
-          // player may already exist
+          // ignore if player already exists or DOM not ready
         }
       });
       playersCreated.current = true;
@@ -115,7 +115,9 @@ export default function CurrentProjects() {
       return;
     }
 
-    window.onYouTubeIframeAPIReady = () => createPlayers();
+    window.onYouTubeIframeAPIReady = () => {
+      createPlayers();
+    };
 
     const existing = document.getElementById('youtube-iframe-api');
     if (!existing) {
@@ -128,62 +130,64 @@ export default function CurrentProjects() {
   }, []);
 
   return (
-    <section className="bg-gradient-to-b from-gray-950 to-gray-900 py-8 sm:py-12 overflow-hidden">
-      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-6 sm:mb-10 text-center">
-          <h1 className="mb-2 text-2xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+    <section className="min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 py-12 overflow-x-hidden">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 overflow-hidden">
+        <div className="mb-12 text-center">
+          <h1 className="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
             Current Projects
           </h1>
-          <p className="mx-auto max-w-2xl text-xs sm:text-base text-gray-400">
+          <p className="mx-auto max-w-2xl text-gray-400">
             Robotics and AI projects I&apos;m currently working on
           </p>
         </div>
 
-        <Carousel
-          setApi={setApi}
-          opts={{ align: 'start', loop: true }}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-3 sm:-ml-4">
-            {projects.map((project) => (
-              <CarouselItem
-                key={project.id}
-                className="pl-3 sm:pl-4 basis-[85%] sm:basis-1/2"
-              >
-                <div className="group rounded-xl border border-gray-800/50 bg-gray-900/50 overflow-hidden">
-                  <div className="relative w-full aspect-video bg-gray-800">
-                    <div
-                      id={`yt-player-${project.id}`}
-                      className="absolute inset-0 [&>iframe]:absolute [&>iframe]:inset-0 [&>iframe]:w-full [&>iframe]:h-full"
-                    />
+        <div className="mx-auto max-w-5xl">
+          <Carousel
+            setApi={setApi}
+            opts={{ align: 'start', loop: true }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {projects.map((project) => (
+                <CarouselItem
+                  key={project.id}
+                  className="pl-2 md:pl-4 md:basis-1/2"
+                >
+                  <div className="group rounded-xl border border-gray-800/50 bg-gray-900/50 overflow-hidden transition-all duration-300 hover:border-cyan-500/30 hover:shadow-lg hover:shadow-cyan-500/10">
+                    <div className="relative w-full h-[280px] min-h-[280px] bg-gray-800 flex items-center justify-center overflow-hidden">
+                      <div
+                        id={`yt-player-${project.id}`}
+                        className="absolute inset-0 h-full w-full [&>iframe]:absolute [&>iframe]:inset-0 [&>iframe]:h-full [&>iframe]:w-full"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="mb-2 text-lg font-semibold text-white group-hover:text-cyan-400 transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-gray-400">
+                        {project.description}
+                      </p>
+                    </div>
                   </div>
-                  <div className="p-3 sm:p-5">
-                    <h3 className="mb-1 text-sm sm:text-base font-semibold text-white group-hover:text-cyan-400 transition-colors leading-tight">
-                      {project.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
-                      {project.description}
-                    </p>
-                  </div>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
 
-        <div className="flex justify-center gap-2 mt-4 sm:mt-6">
-          {projects.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => api?.scrollTo(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                current === index
-                  ? 'w-6 sm:w-8 bg-cyan-500'
-                  : 'w-2 bg-gray-600 hover:bg-gray-500'
-              }`}
-              aria-label={`Go to project ${index + 1}`}
-            />
-          ))}
+          <div className="flex justify-center gap-2 mt-6">
+            {projects.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => api?.scrollTo(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  current === index
+                    ? 'w-8 bg-cyan-500'
+                    : 'w-2 bg-gray-600 hover:bg-gray-500'
+                }`}
+                aria-label={`Go to project ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -58,95 +58,112 @@ export default function ExtracurricularActivities() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    if (!api) return;
+    if (!api) {
+      return;
+    }
+
     setCurrent(api.selectedScrollSnap());
+
     api.on('select', () => {
       setCurrent(api.selectedScrollSnap());
     });
   }, [api]);
 
+  // Auto-play: slide from right to left every 4 seconds
   useEffect(() => {
     if (!api) return;
+
     const interval = setInterval(() => {
       if (api.canScrollNext()) {
         api.scrollNext();
       } else {
+        // Loop back to the beginning
         api.scrollTo(0);
       }
     }, 4000);
+
     return () => clearInterval(interval);
   }, [api]);
 
   return (
-    <section className="bg-gradient-to-b from-gray-900 to-gray-950 py-8 sm:py-12 overflow-hidden">
-      <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-6 sm:mb-10 text-center">
-          <h1 className="mb-2 text-2xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+    <section className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-950 py-12 overflow-x-hidden">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 overflow-hidden">
+        <div className="mb-12 text-center">
+          <h1 className="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
             Extracurricular Activities
           </h1>
         </div>
 
-        <Carousel
-          setApi={setApi}
-          opts={{ align: 'start', loop: true }}
-          className="w-full"
-        >
-          <CarouselContent className="-ml-3 sm:-ml-4">
-            {activities.map((activity) => (
-              <CarouselItem key={activity.id} className="pl-3 sm:pl-4 basis-[85%] sm:basis-1/2">
-                <div className="bg-gray-900/50 border border-gray-800/50 rounded-xl overflow-hidden shadow-lg">
-                  <div className="relative w-full aspect-[4/3] sm:aspect-video bg-gray-800">
-                    <Image
-                      src={activity.image}
-                      alt={activity.description}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 85vw, 50vw"
-                    />
-                    <div className="absolute top-2 right-2 sm:top-3 sm:right-3">
-                      <span className="inline-block rounded-full bg-black/60 px-2.5 py-1 text-[10px] sm:text-xs font-medium text-gray-200 backdrop-blur-sm">
-                        {activity.duration}
-                      </span>
+        <div className="max-w-5xl mx-auto">
+          <Carousel
+            setApi={setApi}
+            opts={{
+              align: 'start',
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {activities.map((activity, index) => (
+                <CarouselItem key={activity.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/2">
+                  <div className="bg-gray-900/50 border-gray-800/50 rounded-lg overflow-hidden shadow-lg transition-all duration-300 hover:shadow-cyan-500/20 hover:border-cyan-500/30">
+                    {/* Image Gallery */}
+                    <div className="relative w-full aspect-video overflow-hidden bg-gray-800">
+                      <Image
+                        src={activity.image}
+                        alt={activity.organization || ''}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="absolute top-4 left-4">
+                        <span className="inline-block rounded-full bg-cyan-500/90 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                          {activity.category}
+                        </span>
+                      </div>
+                      <div className="absolute top-4 right-4">
+                        <span className="inline-block rounded-full bg-black/50 px-3 py-1 text-xs font-medium text-gray-300 backdrop-blur-sm">
+                          {activity.duration}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Description Below */}
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-white mb-1">{activity.organization}</h3>
+                      <p className="text-cyan-400/80 font-medium text-sm mb-3">{activity.role}</p>
+                      <p className="text-gray-400 text-sm mb-4">{activity.description}</p>
+                      {activity.link && (
+                        <Link href={activity.link} target="_blank" rel="noopener noreferrer" className="text-cyan-400/80 font-medium text-sm mb-3">
+                          View More
+                        </Link>
+                      )}
+                      
                     </div>
                   </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
 
-                  <div className="p-3 sm:p-5">
-                    {activity.organization && (
-                      <h3 className="text-sm sm:text-lg font-bold text-white mb-1 leading-tight">{activity.organization}</h3>
-                    )}
-                    <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">{activity.description}</p>
-                    {activity.link && (
-                      <Link
-                        href={activity.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block mt-2 text-cyan-400 font-medium text-xs sm:text-sm"
-                      >
-                        View More
-                      </Link>
-                    )}
-                  </div>
-                </div>
-              </CarouselItem>
+          {/* Dots indicator */}
+          <div className="flex justify-center gap-2 mt-6">
+            {activities.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => api?.scrollTo(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  current === index
+                    ? 'w-8 bg-cyan-500'
+                    : 'w-2 bg-gray-600 hover:bg-gray-500'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
             ))}
-          </CarouselContent>
-        </Carousel>
-
-        <div className="flex justify-center gap-2 mt-4 sm:mt-6">
-          {activities.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => api?.scrollTo(index)}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                current === index
-                  ? 'w-6 sm:w-8 bg-cyan-500'
-                  : 'w-2 bg-gray-600 hover:bg-gray-500'
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
