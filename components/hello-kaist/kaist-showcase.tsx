@@ -2,8 +2,6 @@
 
 import { useRef } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import JavaIcon from '@/resource/java.svg';
 import PythonIcon from '@/resource/python.svg';
@@ -23,9 +21,9 @@ const projects = [
     description: 'An IoT-based smart farming solution that monitors and automates plant growth using sensors and machine learning algorithms.',
     highlights: ['Real-time environmental monitoring', 'Automated irrigation control', 'Growth prediction using AI'],
     icons: [
-      <PythonIcon key="python" className="w-5 h-5" />,
-      <FlaskIcon key="flask" className="w-5 h-5" />,
-      <TkinterIcon key="tkinter" className="w-5 h-5" />,
+      <PythonIcon key="python" className="w-4 h-4 sm:w-5 sm:h-5" />,
+      <FlaskIcon key="flask" className="w-4 h-4 sm:w-5 sm:h-5" />,
+      <TkinterIcon key="tkinter" className="w-4 h-4 sm:w-5 sm:h-5" />,
     ],
   },
   {
@@ -35,9 +33,9 @@ const projects = [
     description: 'A full-stack real estate platform featuring property listings, virtual tours, and an integrated booking system.',
     highlights: ['Property search with filters', 'Virtual tour integration', 'Secure payment processing'],
     icons: [
-      <JavaIcon key="java" className="w-5 h-5" />,
-      <JSPIcon key="jsp" className="w-5 h-5" />,
-      <DatabaseIcon key="db" className="w-5 h-5" />,
+      <JavaIcon key="java" className="w-4 h-4 sm:w-5 sm:h-5" />,
+      <JSPIcon key="jsp" className="w-4 h-4 sm:w-5 sm:h-5" />,
+      <DatabaseIcon key="db" className="w-4 h-4 sm:w-5 sm:h-5" />,
     ],
   },
   {
@@ -63,8 +61,8 @@ const projects = [
     description: 'A modern food delivery platform with real-time order tracking and seamless user experience.',
     highlights: ['Real-time order tracking', 'Restaurant integration', 'Secure checkout'],
     icons: [
-      <ReactJsIcon key="react" className="w-5 h-5" />,
-      <DatabaseIcon key="db" className="w-5 h-5" />,
+      <ReactJsIcon key="react" className="w-4 h-4 sm:w-5 sm:h-5" />,
+      <DatabaseIcon key="db" className="w-4 h-4 sm:w-5 sm:h-5" />,
     ],
   },
   {
@@ -74,171 +72,116 @@ const projects = [
     description: 'A responsive personal portfolio website showcasing projects and skills with modern UI/UX design.',
     highlights: ['Responsive design', 'SEO optimized', 'Fast page loads'],
     icons: [
-      <NextJsIcon key="next" className="w-5 h-5" />,
-      <ReactJsIcon key="react" className="w-5 h-5" />,
-      <TailwindCssIcon key="tailwind" className="w-5 h-5" />,
+      <NextJsIcon key="next" className="w-4 h-4 sm:w-5 sm:h-5" />,
+      <ReactJsIcon key="react" className="w-4 h-4 sm:w-5 sm:h-5" />,
+      <TailwindCssIcon key="tailwind" className="w-4 h-4 sm:w-5 sm:h-5" />,
     ],
   },
 ];
 
-// Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.1,
-    },
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
   },
 };
 
 const cardVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: 50,
-    scale: 0.95,
-  },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   },
 };
 
 const titleVariants = {
-  hidden: { 
-    opacity: 0, 
-    y: -30,
-  },
+  hidden: { opacity: 0, y: -20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] },
   },
 };
 
 export default function KaistShowcase() {
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { 
-    once: true, 
-    amount: 0.2,
-    margin: '0px 0px -100px 0px'
-  });
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   return (
-    <section 
+    <section
       ref={sectionRef}
-      className="min-h-screen bg-gradient-to-b from-gray-950 to-gray-900 py-12"
+      className="bg-gradient-to-b from-gray-950 to-gray-900 py-8 sm:py-12 overflow-hidden"
     >
-      <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        <motion.div 
-          className="mb-12 text-center"
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          className="mb-6 sm:mb-10 text-center"
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           variants={titleVariants}
         >
-          <motion.h1 
-            className="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl"
+          <motion.h1
+            className="mb-2 text-2xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl"
             variants={titleVariants}
           >
             Project Showcase
           </motion.h1>
-          <motion.p 
-            className="mx-auto max-w-2xl text-lg text-gray-400"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          <motion.p
+            className="mx-auto max-w-2xl text-xs sm:text-base text-gray-400"
+            initial={{ opacity: 0, y: 15 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             A collection of projects demonstrating my skills in software development,
-            AI/ML, and innovative solutions. Each project represents my commitment to
-            solving real-world problems through technology.
+            AI/ML, and innovative solutions.
           </motion.p>
         </motion.div>
 
-        <motion.div 
-          className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+        <motion.div
+          className="grid grid-cols-1 gap-3 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3"
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
           variants={containerVariants}
         >
           {projects.map((project) => (
-            <motion.div
-              key={project.id}
-              variants={cardVariants}
-              whileHover={{ 
-                y: -8,
-                transition: { duration: 0.3 }
-              }}
-            >
-              <Card className="bg-gray-900/50 border-gray-800/50 shadow-lg transition-all duration-300 hover:shadow-cyan-500/20 hover:border-cyan-500/30 h-full">
-                <CardHeader>
-                  <motion.div 
-                    className="mb-2"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                    transition={{ delay: 0.3 + (project.id * 0.1) }}
-                  >
-                    <span className="inline-block rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-medium text-cyan-400">
+            <motion.div key={project.id} variants={cardVariants}>
+              <Card className="bg-gray-900/50 border-gray-800/50 shadow-lg transition-all duration-300 hover:shadow-cyan-500/20 hover:border-cyan-500/30 h-full overflow-hidden">
+                <CardHeader className="p-3 pb-2 sm:p-5 sm:pb-3">
+                  <div className="mb-1">
+                    <span className="inline-block rounded-full bg-cyan-500/10 px-2 py-0.5 text-[10px] sm:text-xs font-medium text-cyan-400">
                       {project.category}
                     </span>
-                  </motion.div>
-                  <CardTitle className="text-xl text-white">{project.title}</CardTitle>
-                  <CardDescription className="text-gray-400">
+                  </div>
+                  <CardTitle className="text-sm sm:text-lg text-white leading-tight">
+                    {project.title}
+                  </CardTitle>
+                  <CardDescription className="text-gray-400 text-[11px] sm:text-sm leading-relaxed">
                     {project.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <div className="mb-4">
-                    <h4 className="mb-2 text-sm font-semibold text-gray-300">Key Highlights:</h4>
-                    <ul className="space-y-1">
+                <CardContent className="p-3 pt-0 sm:p-5 sm:pt-0">
+                  <div className="mb-2 sm:mb-3">
+                    <h4 className="mb-1 text-[10px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider">Highlights</h4>
+                    <ul className="space-y-0.5">
                       {project.highlights.map((highlight, index) => (
-                        <motion.li 
-                          key={index} 
-                          className="flex items-start gap-2 text-sm text-gray-400"
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-                          transition={{ 
-                            delay: 0.4 + (project.id * 0.1) + (index * 0.1),
-                            duration: 0.4
-                          }}
-                        >
-                          <motion.span 
-                            className="mt-1 block h-1.5 w-1.5 rounded-full bg-cyan-500"
-                            whileHover={{ scale: 1.5 }}
-                          />
-                          {highlight}
-                        </motion.li>
+                        <li key={index} className="flex items-start gap-1.5 sm:gap-2 text-[11px] sm:text-sm text-gray-400 leading-snug">
+                          <span className="mt-1 block h-1 w-1 sm:h-1.5 sm:w-1.5 rounded-full bg-cyan-500 flex-shrink-0" />
+                          <span>{highlight}</span>
+                        </li>
                       ))}
                     </ul>
                   </div>
-                  <motion.div 
-                    className="flex flex-wrap items-center gap-2 border-t border-gray-800/50 pt-4"
-                    initial={{ opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-                    transition={{ delay: 0.5 + (project.id * 0.1) }}
-                  >
+                  <div className="flex flex-wrap items-center gap-1 sm:gap-1.5 border-t border-gray-800/50 pt-2 sm:pt-3">
                     {project.icons.map((icon, index) => (
-                      <motion.div
+                      <div
                         key={index}
-                        className="flex items-center gap-1 rounded-md bg-gray-800/50 px-2 py-1 text-xs text-gray-300"
-                        whileHover={{ 
-                          scale: 1.1,
-                          backgroundColor: 'rgba(6, 182, 212, 0.2)',
-                        }}
-                        transition={{ duration: 0.2 }}
+                        className="flex items-center gap-1 rounded bg-gray-800/50 px-1.5 py-0.5 sm:px-2 sm:py-1 text-[10px] sm:text-xs text-gray-300"
                       >
                         {typeof icon === 'string' ? <span>{icon}</span> : icon}
-                      </motion.div>
+                      </div>
                     ))}
-                  </motion.div>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
@@ -248,4 +191,3 @@ export default function KaistShowcase() {
     </section>
   );
 }
-
