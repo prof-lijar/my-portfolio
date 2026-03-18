@@ -11,13 +11,14 @@ import ReactJsIcon from '@/resource/reactjs.svg';
 import NextJsIcon from '@/resource/nextjs.svg';
 import TailwindCssIcon from '@/resource/tailwind.svg';
 import { DatabaseIcon } from '../icons/icons';
+import { ExternalLink, Server, Cloud, Code2, Users, Rocket } from 'lucide-react';
 
 const MyProjects = () => {
   const projects = [
     {
       id: 1,
       title: 'Anygrow3',
-      description: 'Smart Fram project',
+      description: 'Smart Farm project',
       icons: [
         <PythonIcon key="python" className="w-6 h-6" />,
         <FlaskIcon key="flask" className="w-6 h-6" />,
@@ -57,49 +58,121 @@ const MyProjects = () => {
         'Firebase',
       ],
     },
-    {
-      id: 6,
-      title: 'LI JAR | Portfolio',
-      description: 'Personal Portfolio website',
-      icons: [
-        <NextJsIcon key="next" className="w-6 h-6" />,
-        <ReactJsIcon key="react" className="w-6 h-6" />,
-        <TailwindCssIcon key="tailwind" className="w-6 h-6" />,
-        <DatabaseIcon key="db" className="w-6 h-6" />,
-        'PostgreSQL',
-      ],
-    },
+  ];
+
+  const highlights = [
+    { icon: <Rocket className="w-5 h-5 text-cyan-400" />, label: 'ProjectFounding Member' },
+    { icon: <Server className="w-5 h-5 text-cyan-400" />, label: 'Software Engineer' },
+    { icon: <Cloud className="w-5 h-5 text-cyan-400" />, label: 'Cloud Infrastructure' },
+    { icon: <Code2 className="w-5 h-5 text-cyan-400" />, label: 'Project Setup & Architecture' },
+    { icon: <Users className="w-5 h-5 text-cyan-400" />, label: 'AI EdTech Platform' },
+  ];
+
+  const techStack = [
+    'Java/Spring Boot', 'TypeScript/Next.js', 'PostgreSQL', 'MongoDB', 'Google Cloud', 'Docker', 'CI/CD',
   ];
 
   return (
     <section className="container mx-auto px-4 md:px-6 lg:px-8" id="projects">
-      <div className="grid gap-8">
+      <div className="grid gap-12">
         <div className="grid gap-4 place-items-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Projects</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
-            <Card key={project.id} className="bg-gray-900/50 border-gray-800/50 shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-300">
-              <CardHeader>
-                <CardTitle>{project.title}</CardTitle>
-                <CardDescription>{project.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center gap-2">
-                  {project.icons.map((icon, index) => (
-                    <div key={index} className="flex items-center gap-1">
-                      {typeof icon === 'string' ? <p>{icon}</p> : icon}
+
+        {/* Featured Project — Gyopool */}
+        <div className="relative rounded-2xl border border-cyan-500/30 bg-gradient-to-br from-gray-900 via-gray-900/80 to-cyan-950/30 p-[1px] shadow-lg shadow-cyan-500/10">
+          <div className="rounded-2xl bg-gray-950/60 backdrop-blur-sm p-6 md:p-10">
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12">
+              <div className="flex-1 space-y-6">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex items-center rounded-full bg-cyan-500/10 border border-cyan-500/30 px-3 py-1 text-xs font-semibold tracking-wide text-cyan-400 uppercase">
+                    Featured
+                  </span>
+                  <span className="inline-flex items-center rounded-full bg-green-500/10 border border-green-500/30 px-3 py-1 text-xs font-semibold tracking-wide text-green-400 uppercase">
+                    Production
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-bold text-white sm:text-3xl">
+                    Gyopool AI
+                  </h3>
+                  <p className="mt-1 text-lg text-cyan-400">교풀AI — AI-powered Education Platform for Teachers</p>
+                </div>
+
+                <p className="text-gray-300 leading-relaxed max-w-2xl">
+                  A full-scale AI EdTech SaaS platform that empowers teachers to design, run, and monitor AI-driven classes.
+                  As a <span className="text-white font-semibold">founding member and back-end developer</span>, I built
+                  the project from the ground up — setting up the cloud infrastructure, back-end architecture,
+                  database design, deployment pipelines, and core API services that power the platform today.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {highlights.map((item) => (
+                    <div key={item.label} className="flex items-center gap-2.5 rounded-lg bg-gray-800/50 px-3 py-2">
+                      {item.icon}
+                      <span className="text-sm text-gray-200">{item.label}</span>
                     </div>
                   ))}
                 </div>
-              </CardContent>
-              <CardFooter>
-                <Link href={`/project/${project.id}`}>
-                  <Button variant="outline">View Project</Button>
-                </Link>
-              </CardFooter>
-            </Card>
-          ))}
+
+                <div className="space-y-3">
+                  <p className="text-sm font-medium text-gray-400 uppercase tracking-wider">Tech Stack</p>
+                  <div className="flex flex-wrap gap-2">
+                    {techStack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-md bg-gray-800/80 border border-gray-700/50 px-2.5 py-1 text-xs font-medium text-gray-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-2">
+                  <a
+                    href="https://www.gyopool.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-lg bg-cyan-500 px-5 py-2.5 text-sm font-semibold text-gray-950 transition-colors hover:bg-cyan-400"
+                  >
+                    Visit Gyopool AI
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Other Projects */}
+        <div>
+          <h3 className="mb-6 text-center text-xl font-semibold text-gray-400">Other Projects</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((project) => (
+              <Card key={project.id} className="bg-gray-900/50 border-gray-800/50 shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-300">
+                <CardHeader>
+                  <CardTitle>{project.title}</CardTitle>
+                  <CardDescription>{project.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    {project.icons.map((icon, index) => (
+                      <div key={index} className="flex items-center gap-1">
+                        {typeof icon === 'string' ? <p>{icon}</p> : icon}
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+                <CardFooter>
+                  <Link href={`/project/${project.id}`}>
+                    <Button variant="outline">View Project</Button>
+                  </Link>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
