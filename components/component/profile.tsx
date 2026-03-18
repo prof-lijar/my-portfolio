@@ -16,11 +16,11 @@ import {
 
 const info = [
   {
-    label: "Spoken Language",
+    label: "Language Proficiency",
     value: (
       <span className="font-bold">
-        English<span className="mx-1">|</span>Korean
-        <span className="mx-1">|</span>Burmese<span className="mx-1">|</span>
+        English TOEIC 865<span className="mx-1">|</span>Korean TOPIK 5<span className="mx-1">|</span>
+        <span className="mx-1">|</span>Myanmar<span className="mx-1">|</span>
         Akha
       </span>
     ),
@@ -108,16 +108,30 @@ const Profile = () => {
         <h1 className="mt-3 text-xl sm:text-2xl font-extrabold text-white drop-shadow-lg break-words">
           LI JAR
         </h1>
-        <p className="text-white/90 text-sm sm:text-base font-medium mt-1 text-center break-words">
-          Software Engineer at 
-          <Link
-            href="https://huemoneedu.com/"
-            target="_blank"
-            className="underline underline-offset-2 hover:text-cyan-300 transition-colors break-all"
-          >
-            Huemone Lab
-          </Link>
-        </p>
+        <div className="text-white/90 text-sm sm:text-base font-medium mt-1 text-center break-words space-y-1">
+          <p>
+            Intern &middot; Robotics Research at{' '}
+            <Link
+              href="https://www.thetelos.net/"
+              target="_blank"
+              className="underline underline-offset-2 hover:text-cyan-300 transition-colors break-all"
+            >
+              Telos
+            </Link>
+            <span className="text-white/50 text-xs ml-1">(2026.02–Present)</span>
+          </p>
+          <p>
+            Software Engineer at{' '}
+            <Link
+              href="https://huemoneedu.com/"
+              target="_blank"
+              className="underline underline-offset-2 hover:text-cyan-300 transition-colors break-all"
+            >
+              Huemone Lab
+            </Link>
+            <span className="text-white/50 text-xs ml-1">(2024–2026.02)</span>
+          </p>
+        </div>
       </div>
       {/* Info Section */}
       <div className="flex flex-col gap-0 divide-y divide-gray-700/50 bg-gray-900/50 px-2 sm:px-6 py-6 sm:py-8 w-full">

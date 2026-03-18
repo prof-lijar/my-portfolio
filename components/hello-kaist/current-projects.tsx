@@ -33,11 +33,16 @@ const projects = [
       'Training and deploying AI policies on real robotic hardware using Hugging Face LeRobot framework.',
   },
   {
-    id: 'fr5-robot-arm',
-    videoId: 'eNlEJKJfyA4',
-    title: 'Control FR5 Robot Arm with Keyboard Keys Using Python SDK',
-    description:
-      'Real-time keyboard teleoperation of the FR5 robot arm through a custom Python SDK interface.',
+    id: 'ai-agent-control',
+    videoId: 'ZqdJ4KUoRXw',
+    title: 'AI Agent Control Robot',
+    description: 'AI agent controlling the robot with natural language commands.',
+  },
+  {
+    id: 'ros2-yolo-object-detection',
+    videoId: 'D7B0wVcqiZ8',
+    title: 'ROS 2 YOLO Object Detection',
+    description: 'Robot moves to detected objects using YOLOv8 and ROS 2.',
   },
   {
     id: 'ros2-unity-panel',

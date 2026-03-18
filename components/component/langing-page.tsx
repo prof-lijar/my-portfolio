@@ -8,6 +8,7 @@ import MyProjects from "./my-projects";
 import ContactForm from "./contact-form";
 import MainIntro from "./main-intro";
 import HelloKaistBanner from "./hello-kaist-banner";
+import ResearchPapers from "@/components/hello-kaist/research-papers";
 
 export function LandingPage() {
   return (
@@ -18,6 +19,10 @@ export function LandingPage() {
         </section>
         <section className="z-20">
           <SubNav />
+        </section>
+
+        <section>
+          <ResearchPapers />
         </section>
 
         <section>
