@@ -7,7 +7,7 @@ import { motion, useInView } from 'framer-motion';
 import { ArrowRight, Bot, GraduationCap, FileText, Trophy } from 'lucide-react';
 
 const stats = [
-  { icon: Bot, label: 'Robotics Projects', value: '4' },
+  { icon: Bot, label: 'Robotics Projects', value: '' },
   { icon: Trophy, label: 'Milestones', value: '4' },
   { icon: FileText, label: 'Publications', value: '1' },
   { icon: GraduationCap, label: 'Activities', value: '4+' },
