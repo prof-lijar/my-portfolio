@@ -61,7 +61,7 @@ const MyProjects = () => {
   ];
 
   const highlights = [
-    { icon: <Rocket className="w-5 h-5 text-cyan-400" />, label: 'ProjectFounding Member' },
+    { icon: <Rocket className="w-5 h-5 text-cyan-400" />, label: 'Founding Member' },
     { icon: <Server className="w-5 h-5 text-cyan-400" />, label: 'Software Engineer' },
     { icon: <Cloud className="w-5 h-5 text-cyan-400" />, label: 'Cloud Infrastructure' },
     { icon: <Code2 className="w-5 h-5 text-cyan-400" />, label: 'Project Setup & Architecture' },
@@ -70,6 +70,23 @@ const MyProjects = () => {
 
   const techStack = [
     'Java/Spring Boot', 'TypeScript/Next.js', 'PostgreSQL', 'MongoDB', 'Google Cloud', 'Docker', 'CI/CD',
+  ];
+
+  const dentalHighlights = [
+    { icon: <Users className="w-5 h-5 text-rose-400" />, label: 'Project Manager' },
+    { icon: <Server className="w-5 h-5 text-rose-400" />, label: 'Back-End Developer' },
+    { icon: <Cloud className="w-5 h-5 text-rose-400" />, label: 'Cloud & Deployment' },
+    { icon: <Code2 className="w-5 h-5 text-rose-400" />, label: 'System Architecture' },
+    { icon: <Rocket className="w-5 h-5 text-rose-400" />, label: 'Production Delivery' },
+  ];
+
+  const dentalTechStack = [
+    'React Native',
+    'Back-end API',
+    'Gemini',
+    'Cloud Infrastructure',
+    'Deployment',
+    'Monitoring',
   ];
 
   return (
@@ -138,6 +155,78 @@ const MyProjects = () => {
                     className="inline-flex items-center gap-2 rounded-lg bg-cyan-500 px-5 py-2.5 text-sm font-semibold text-gray-950 transition-colors hover:bg-cyan-400"
                   >
                     Visit Gyopool AI
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Featured Project — DailyDental */}
+        <div className="relative rounded-2xl border border-rose-500/30 bg-gradient-to-br from-gray-900 via-gray-900/80 to-rose-950/30 p-[1px] shadow-lg shadow-rose-500/10">
+          <div className="rounded-2xl bg-gray-950/60 backdrop-blur-sm p-6 md:p-10">
+            <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12">
+              <div className="flex-1 space-y-6">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex items-center rounded-full bg-rose-500/10 border border-rose-500/30 px-3 py-1 text-xs font-semibold tracking-wide text-rose-400 uppercase">
+                    Featured
+                  </span>
+                  <span className="inline-flex items-center rounded-full bg-cyan-500/10 border border-cyan-500/30 px-3 py-1 text-xs font-semibold tracking-wide text-cyan-400 uppercase">
+                    Production App
+                  </span>
+                </div>
+
+                <div>
+                  <h3 className="text-2xl font-bold text-white sm:text-3xl">DailyDental</h3>
+                  <p className="mt-1 text-lg text-rose-400">구강 건강 교육 앱 — Landing & App Experience</p>
+                </div>
+
+                <p className="text-gray-300 leading-relaxed max-w-2xl">
+                  A full education + AI-assisted experience for oral health. Built with{' '}
+                  <span className="text-white font-semibold">React Native</span> for the app and{' '}
+                  <span className="text-white font-semibold">Gemini</span> for AI-assisted experiences.
+                  I served as the{' '}
+                  <span className="text-white font-semibold">Project Manager and back-end developer</span> —
+                  coordinating delivery while building the back-end services and system foundation.
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {dentalHighlights.map((item) => (
+                    <div
+                      key={item.label}
+                      className="flex items-center gap-2.5 rounded-lg bg-gray-800/50 px-3 py-2"
+                    >
+                      {item.icon}
+                      <span className="text-sm text-gray-200">{item.label}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="space-y-3">
+                  <p className="text-sm font-medium text-gray-400 uppercase tracking-wider">
+                    Focus
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {dentalTechStack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="rounded-md bg-gray-800/80 border border-gray-700/50 px-2.5 py-1 text-xs font-medium text-gray-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="pt-2">
+                  <a
+                    href="https://dental-app-landing.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-lg bg-rose-500 px-5 py-2.5 text-sm font-semibold text-gray-950 transition-colors hover:bg-rose-400"
+                  >
+                    Visit DailyDental
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 </div>
