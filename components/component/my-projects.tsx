@@ -17,6 +17,22 @@ const MyProjects = () => {
   const projects = [
     {
       id: 1,
+      title: 'SLM Models Analysis for Multibroadcasting Translation',
+      description: 'Technical evaluation of Small Language Models for real-time multilingual broadcasting.',
+      icons: ['SLM', 'Multibroadcasting', 'Translation', 'Ollama', 'STT+TTS', 'Gemini'],
+    },
+    {
+      id: 2,
+      title: 'Vision-Guided Robot Pick System',
+      description: 'Mini project for vision-guided robotic pick workflow.',
+      icons: ['ROS2', 'Fairino FR5 Robot', 'Python', 'Unity', 'Gemini'],
+      externalUrl:
+        'https://sly-sunstone-e7a.notion.site/Vision-Guided-Robot-Pick-System-325faa9f1cd680419a83f31b4cd8dbd3',
+      badge: 'Mini Project',
+    },
+    
+    {
+      id: 3,
       title: 'Anygrow3',
       description: 'Smart Farm project',
       icons: [
@@ -26,7 +42,7 @@ const MyProjects = () => {
       ],
     },
     {
-      id: 2,
+      id: 4,
       title: 'NAMA Real Estate',
       description: 'Real Estate Website developed with Java, JSP',
       icons: [
@@ -37,19 +53,19 @@ const MyProjects = () => {
       ],
     },
     {
-      id: 3,
+      id: 5,
       title: 'MiNaw AI',
       description: 'AI ChatBot developed using Gemini API, LangChain and Azure speech recognition',
       icons: ['GeminiAPI', 'LangChain', 'Azure'],
     },
     {
-      id: 4,
+      id: 6,
       title: 'Metagrow',
       description: 'VR Shopping Mall',
       icons: ['Unity', 'C#'],
     },
     {
-      id: 5,
+      id: 7,
       title: 'NAMA E-commerce',
       description: 'Food ordering and delivery Website',
       icons: [
@@ -58,15 +74,7 @@ const MyProjects = () => {
         'Firebase',
       ],
     },
-    {
-      id: 6,
-      title: 'Vision-Guided Robot Pick System',
-      description: 'Mini project for vision-guided robotic pick workflow.',
-      icons: ['Computer Vision', 'Robotics', 'Pick-and-Place'],
-      externalUrl:
-        'https://sly-sunstone-e7a.notion.site/Vision-Guided-Robot-Pick-System-325faa9f1cd680419a83f31b4cd8dbd3',
-      badge: 'Mini Project',
-    },
+    
   ];
 
   const highlights = [
