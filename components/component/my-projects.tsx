@@ -58,6 +58,15 @@ const MyProjects = () => {
         'Firebase',
       ],
     },
+    {
+      id: 6,
+      title: 'Vision-Guided Robot Pick System',
+      description: 'Mini project for vision-guided robotic pick workflow.',
+      icons: ['Computer Vision', 'Robotics', 'Pick-and-Place'],
+      externalUrl:
+        'https://sly-sunstone-e7a.notion.site/Vision-Guided-Robot-Pick-System-325faa9f1cd680419a83f31b4cd8dbd3',
+      badge: 'Mini Project',
+    },
   ];
 
   const highlights = [
@@ -242,6 +251,11 @@ const MyProjects = () => {
             {projects.map((project) => (
               <Card key={project.id} className="bg-gray-900/50 border-gray-800/50 shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-300">
                 <CardHeader>
+                  {project.badge && (
+                    <span className="mb-2 inline-flex w-fit items-center rounded-full border border-cyan-500/30 bg-cyan-500/10 px-2 py-0.5 text-xs font-medium text-cyan-400">
+                      {project.badge}
+                    </span>
+                  )}
                   <CardTitle>{project.title}</CardTitle>
                   <CardDescription>{project.description}</CardDescription>
                 </CardHeader>
@@ -255,9 +269,15 @@ const MyProjects = () => {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Link href={`/project/${project.id}`}>
-                    <Button variant="outline">View Project</Button>
-                  </Link>
+                  {project.externalUrl ? (
+                    <a href={project.externalUrl} target="_blank" rel="noopener noreferrer">
+                      <Button variant="outline">View Mini Project</Button>
+                    </a>
+                  ) : (
+                    <Link href={`/project/${project.id}`}>
+                      <Button variant="outline">View Project</Button>
+                    </Link>
+                  )}
                 </CardFooter>
               </Card>
             ))}
