@@ -17,6 +17,7 @@ const MyProjects = () => {
   const projects = [
     {
       id: 1,
+      slug: 'slm-models-analysis-multibroadcasting-translation',
       title: 'SLM Models Analysis for Multibroadcasting Translation',
       description: 'Technical evaluation of Small Language Models for real-time multilingual broadcasting.',
       icons: ['SLM', 'Multibroadcasting', 'Translation', 'Ollama', 'STT+TTS', 'Gemini'],
@@ -30,9 +31,9 @@ const MyProjects = () => {
         'https://sly-sunstone-e7a.notion.site/Vision-Guided-Robot-Pick-System-325faa9f1cd680419a83f31b4cd8dbd3',
       badge: 'Mini Project',
     },
-    
     {
       id: 3,
+      slug: 'anygrow3',
       title: 'Anygrow3',
       description: 'Smart Farm project',
       icons: [
@@ -43,6 +44,7 @@ const MyProjects = () => {
     },
     {
       id: 4,
+      slug: 'nama-real-estate',
       title: 'NAMA Real Estate',
       description: 'Real Estate Website developed with Java, JSP',
       icons: [
@@ -54,18 +56,21 @@ const MyProjects = () => {
     },
     {
       id: 5,
+      slug: 'minaw-ai',
       title: 'MiNaw AI',
       description: 'AI ChatBot developed using Gemini API, LangChain and Azure speech recognition',
       icons: ['GeminiAPI', 'LangChain', 'Azure'],
     },
     {
       id: 6,
+      slug: 'metagrow',
       title: 'Metagrow',
       description: 'VR Shopping Mall',
       icons: ['Unity', 'C#'],
     },
     {
       id: 7,
+      slug: 'nama-ecommerce',
       title: 'NAMA E-commerce',
       description: 'Food ordering and delivery Website',
       icons: [
@@ -74,7 +79,6 @@ const MyProjects = () => {
         'Firebase',
       ],
     },
-    
   ];
 
   const highlights = [
@@ -282,7 +286,7 @@ const MyProjects = () => {
                       <Button variant="outline">View Mini Project</Button>
                     </a>
                   ) : (
-                    <Link href={`/project/${project.id}`}>
+                    <Link href={`/project/${project.slug}`}>
                       <Button variant="outline">View Project</Button>
                     </Link>
                   )}

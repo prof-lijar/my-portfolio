@@ -1,9 +1,20 @@
 import ProjectCard from '@/components/component/view-project'
 import { marked } from 'marked'
+import { notFound } from 'next/navigation'
+import type { ReactNode } from 'react'
+
+type ProjectDetail = {
+  name: string
+  tools: string
+  description: string
+  github?: string
+  youtube?: string
+  images?: string[]
+  content: ReactNode
+}
 
 export default function Page({ params }: { params: { id: string } }) {
-  const id: number = Number(params.id)
-  const index: number = id - 1
+  const slug = params.id
 
   const slmReport = `
 # SLM Models Analysis for Multibroadcasting Translation Project
@@ -21,8 +32,8 @@ The analysis emphasizes practical performance observed during deployment, with a
     breaks: true,
   })
 
-  const projects = [
-    {
+  const projectsBySlug: Record<string, ProjectDetail> = {
+    'slm-models-analysis-multibroadcasting-translation': {
       name: 'SLM Models Analysis for Multibroadcasting Translation',
       tools:
         'Small Language Models (Qwen2.5/Qwen/Llama3.2/Phi-3), Ollama, Hybrid STT+Translation+TTS Backend',
@@ -44,14 +55,13 @@ The analysis emphasizes practical performance observed during deployment, with a
         />
       ),
     },
-    {
+    anygrow3: {
       name: 'Anygrow3',
       tools: 'Python, Flask, Websocket',
       description:
         'I re-programed the whole project, orignally programmed in Nodejs, with Python. ',
       github: 'https://github.com/davidlijar/anygrow3.git',
       youtube: 'https://www.youtube.com/embed/CgxNuzuAr1Q',
-
       content: (
         <>
           <h2 className=" text-lg font-bold mt-5">구현 세부 사항</h2>
@@ -66,7 +76,7 @@ The analysis emphasizes practical performance observed during deployment, with a
         </>
       ),
     },
-    {
+    'nama-real-estate': {
       name: 'NAMA Real Estate',
       tools: 'Java, JSP, Javascript, Bootstrap',
       description:
@@ -97,7 +107,7 @@ The analysis emphasizes practical performance observed during deployment, with a
         </>
       ),
     },
-    {
+    'minaw-ai': {
       name: 'MiNaw AI',
       tools:
         'Python, GeminiAPI, LangChain, Azure Speech Recognition, Flask server',
@@ -120,7 +130,7 @@ The analysis emphasizes practical performance observed during deployment, with a
         </>
       ),
     },
-    {
+    metagrow: {
       name: 'Metagrow',
       tools: 'Unity, C#, Ready Player Me SDK, Meta Quest 2',
       description:
@@ -139,7 +149,7 @@ The analysis emphasizes practical performance observed during deployment, with a
         </>
       ),
     },
-    {
+    'nama-ecommerce': {
       name: 'NAMA E-commerce',
       tools: 'Reactjs, Firebase',
       description: 'Food Ordering and Delivery website.',
@@ -156,7 +166,7 @@ The analysis emphasizes practical performance observed during deployment, with a
         </>
       ),
     },
-    {
+    'li-jar-portfolio': {
       name: 'LI JAR | Portfolio',
       tools: 'Nextjs, TailwindCss, PostgreSQL',
       description: 'Personal Portfolio Webpage.',
@@ -172,12 +182,14 @@ The analysis emphasizes practical performance observed during deployment, with a
         </>
       ),
     },
-   
-  ]
+  }
+
+  const project = projectsBySlug[slug]
+  if (!project) notFound()
 
   return (
     <section>
-      <ProjectCard project={projects[`${index}`]} />
+      <ProjectCard project={project} />
     </section>
   )
 }
