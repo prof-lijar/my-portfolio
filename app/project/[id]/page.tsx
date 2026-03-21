@@ -23,6 +23,28 @@ The analysis emphasizes practical performance observed during deployment, with a
 
   const projects = [
     {
+      name: 'SLM Models Analysis for Multibroadcasting Translation',
+      tools:
+        'Small Language Models (Qwen2.5/Qwen/Llama3.2/Phi-3), Ollama, Hybrid STT+Translation+TTS Backend',
+      description:
+        'Technical evaluation report comparing SLM trade-offs for low-latency multilingual broadcasting translation workflows.',
+      youtube: 'https://www.youtube.com/embed/gKAVchHu2LU',
+      images: [
+        '/leaudio1.jpg',
+        '/leaudio2.jpg',
+        '/leaudio3.jpg',
+        '/leaudio4.jpg',
+        '/leaudio5.jpg',
+        '/leaudio6.jpg',
+      ],
+      content: (
+        <div
+          className="prose prose-sm text-black max-w-none"
+          dangerouslySetInnerHTML={{ __html: slmReportHtml }}
+        />
+      ),
+    },
+    {
       name: 'Anygrow3',
       tools: 'Python, Flask, Websocket',
       description:
@@ -150,28 +172,7 @@ The analysis emphasizes practical performance observed during deployment, with a
         </>
       ),
     },
-    {
-      name: 'SLM Models Analysis for Multibroadcasting Translation',
-      tools:
-        'Small Language Models (Qwen2.5/Qwen/Llama3.2/Phi-3), Ollama, Hybrid STT+Translation+TTS Backend',
-      description:
-        'Technical evaluation report comparing SLM trade-offs for low-latency multilingual broadcasting translation workflows.',
-      youtube: 'https://www.youtube.com/embed/gKAVchHu2LU',
-      images: [
-        '/leaudio1.jpg',
-        '/leaudio2.jpg',
-        '/leaudio3.jpg',
-        '/leaudio4.jpg',
-        '/leaudio5.jpg',
-        '/leaudio6.jpg',
-      ],
-      content: (
-        <div
-          className="prose prose-sm text-black max-w-none"
-          dangerouslySetInnerHTML={{ __html: slmReportHtml }}
-        />
-      ),
-    },
+   
   ]
 
   return (
