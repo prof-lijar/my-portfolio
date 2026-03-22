@@ -118,7 +118,7 @@ const Profile = () => {
             >
               Telos
             </Link>
-            <span className="text-white/50 text-xs ml-1">(2026.02–Present)</span>
+            <span className="text-white/50 text-xs ml-1">(2026.02–2026.03)</span>
           </p>
           <p>
             Software Engineer at{' '}
@@ -129,7 +129,7 @@ const Profile = () => {
             >
               Huemone Lab
             </Link>
-            <span className="text-white/50 text-xs ml-1">(2024–2026.02)</span>
+            <span className="text-white/50 text-xs ml-1">(2024.07–2026.02)</span>
           </p>
         </div>
       </div>

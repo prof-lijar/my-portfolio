@@ -12,6 +12,16 @@ const nextConfig = {
         destination: '/project/multi-lang-live-translation',
         permanent: true,
       },
+      {
+        source: '/project/anygrow3',
+        destination: '/project/anygrow-smart-farm',
+        permanent: true,
+      },
+      {
+        source: '/project/metagrow',
+        destination: '/project/vr-shopping-mall',
+        permanent: true,
+      },
     ]
   },
   images: {
