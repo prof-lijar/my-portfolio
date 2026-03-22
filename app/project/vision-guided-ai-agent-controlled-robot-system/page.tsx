@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ExternalLink, ArrowLeft, Github } from 'lucide-react'
+import { ExternalLink, ArrowLeft, Github, FileText } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Vision-Guided Robot Pick System | LI JAR',
@@ -53,6 +53,12 @@ export default function VisionGuidedRobotPickPage() {
         </div>
         <div className="flex flex-wrap gap-3 pt-2">
           <Button variant="outline" size="sm" asChild>
+            <a href={PDF_PATH} target="_blank" rel="noopener noreferrer">
+              <FileText className="mr-2 h-4 w-4" />
+              Project report (PDF)
+            </a>
+          </Button>
+          <Button variant="outline" size="sm" asChild>
             <a href={NOTION_URL} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="mr-2 h-4 w-4" />
               Documentation
@@ -82,19 +88,6 @@ export default function VisionGuidedRobotPickPage() {
             </div>
           </div>
         </div>
-
-        <div>
-          <h2 className="mb-4 text-lg font-semibold text-foreground">Project report (PDF)</h2>
-          <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
-            <iframe
-              src={PDF_PATH}
-              title="Vision-Guided Robot Pick System — PDF report"
-              className="h-[min(85vh,900px)] w-full border-0 bg-muted/30"
-            />
-          </div>
-        </div>
-
-    
       </div>
     </section>
   )
