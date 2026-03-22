@@ -12,23 +12,33 @@ import NextJsIcon from '@/resource/nextjs.svg';
 import TailwindCssIcon from '@/resource/tailwind.svg';
 import { DatabaseIcon } from '../icons/icons';
 import { ExternalLink, Server, Cloud, Code2, Users, Rocket } from 'lucide-react';
+import type { ReactNode } from 'react';
+
+type PortfolioProject = {
+  id: number
+  title: string
+  description: string
+  icons: (string | ReactNode)[]
+  slug?: string
+  externalUrl?: string
+  badge?: string
+}
 
 const MyProjects = () => {
-  const projects = [
+  const projects: PortfolioProject[] = [
     {
       id: 1,
-      slug: 'slm-models-analysis-multibroadcasting-translation',
+      slug: 'multi-lang-live-translation',
       title: 'SLM Models Analysis for Multibroadcasting Translation',
       description: 'Technical evaluation of Small Language Models for real-time multilingual broadcasting.',
       icons: ['SLM', 'Multibroadcasting', 'Translation', 'Ollama', 'STT+TTS', 'Gemini'],
     },
     {
       id: 2,
+      slug: 'vision-guided-ai-agent-controlled-robot-system',
       title: 'Vision-Guided Robot Pick System',
       description: 'Mini project for vision-guided robotic pick workflow.',
       icons: ['ROS2', 'Fairino FR5 Robot', 'Python', 'Unity', 'Gemini'],
-      externalUrl:
-        'https://sly-sunstone-e7a.notion.site/Vision-Guided-Robot-Pick-System-325faa9f1cd680419a83f31b4cd8dbd3',
       badge: 'Mini Project',
     },
     {
@@ -283,7 +293,7 @@ const MyProjects = () => {
                 <CardFooter>
                   {project.externalUrl ? (
                     <a href={project.externalUrl} target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline">View Mini Project</Button>
+                      <Button variant="outline">View Project</Button>
                     </a>
                   ) : (
                     <Link href={`/project/${project.slug}`}>

@@ -1,5 +1,4 @@
 import ProjectCard from '@/components/component/view-project'
-import { marked } from 'marked'
 import { notFound } from 'next/navigation'
 import type { ReactNode } from 'react'
 
@@ -16,45 +15,7 @@ type ProjectDetail = {
 export default function Page({ params }: { params: { id: string } }) {
   const slug = params.id
 
-  const slmReport = `
-# SLM Models Analysis for Multibroadcasting Translation Project
-
-## Abstract
-
-This report presents a comprehensive evaluation of Small Language Models (SLMs) applied within a multibroadcasting simultaneous translation system. Each model is assessed across technical specifications, translation performance, computational requirements, and operational trade-offs. The goal is to establish a clear comparative framework to support model selection for real-time multilingual broadcasting environments.
-
-The analysis emphasizes practical performance observed during deployment, with a focus on suitability for Korean, Japanese, Chinese, English, and Vietnamese translation workflows.
-
-`.trim()
-
-  const slmReportHtml = marked.parse(slmReport, {
-    gfm: true,
-    breaks: true,
-  })
-
   const projectsBySlug: Record<string, ProjectDetail> = {
-    'slm-models-analysis-multibroadcasting-translation': {
-      name: 'SLM Models Analysis for Multibroadcasting Translation',
-      tools:
-        'Small Language Models (Qwen2.5/Qwen/Llama3.2/Phi-3), Ollama, Hybrid STT+Translation+TTS Backend',
-      description:
-        'Technical evaluation report comparing SLM trade-offs for low-latency multilingual broadcasting translation workflows.',
-      youtube: 'https://www.youtube.com/embed/gKAVchHu2LU',
-      images: [
-        '/leaudio1.jpg',
-        '/leaudio2.jpg',
-        '/leaudio3.jpg',
-        '/leaudio4.jpg',
-        '/leaudio5.jpg',
-        '/leaudio6.jpg',
-      ],
-      content: (
-        <div
-          className="prose prose-sm text-black max-w-none"
-          dangerouslySetInnerHTML={{ __html: slmReportHtml }}
-        />
-      ),
-    },
     anygrow3: {
       name: 'Anygrow3',
       tools: 'Python, Flask, Websocket',

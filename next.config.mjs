@@ -5,6 +5,15 @@
 
 // next.config.js
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/project/slm-models-analysis-multibroadcasting-translation',
+        destination: '/project/multi-lang-live-translation',
+        permanent: true,
+      },
+    ]
+  },
   images: {
     remotePatterns: [
       {
