@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/navigation-menu";
 
 const menus = [
-  { name: "Portfolio", href: "/portfolio" },
+  { name: "Projects", href: "/portfolio" },
   { name: "Certificates", href: "/certificates" },
   { name: "Hello KAIST", href: "/hello-kaist" },
   { name: "About Me", href: "/about" },

@@ -122,7 +122,7 @@ const MyProjects = () => {
   ];
 
   return (
-    <section className="container mx-auto px-4 md:px-6 lg:px-8" id="projects">
+    <section className="container mx-auto mt-8 px-4 md:mt-10 md:px-6 lg:mt-12 lg:px-8" id="projects">
       <div className="grid gap-12">
         <div className="grid gap-4 place-items-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Projects</h2>
@@ -312,4 +312,3 @@ const MyProjects = () => {
 };
 
 export default MyProjects;
-

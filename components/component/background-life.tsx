@@ -60,6 +60,12 @@ const Timeline = () => {
       description:
         "Developing Gyopool AI, AI platform for teachers and students",
     },
+    {
+      title: "Intern AI Researcher | KETI",
+      time: "2026.05~current",
+      description:
+        "Intern AI Researcher at Korea Electronics Technology Institute",
+    },
   ];
 
   return (
@@ -98,4 +104,3 @@ const Timeline = () => {
 };
 
 export default Timeline;
-

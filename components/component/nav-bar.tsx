@@ -20,7 +20,7 @@ export function Navbar() {
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Hello KAIST", href: "/hello-kaist" },
-    { name: "Portfolio", href: "/portfolio" },
+    { name: "Projects", href: "/portfolio" },
     { name: "Certificates", href: "/certificates" },
   ];
 

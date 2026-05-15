@@ -110,15 +110,7 @@ const Profile = () => {
         </h1>
         <div className="text-white/90 text-sm sm:text-base font-medium mt-1 text-center break-words space-y-1">
           <p>
-            Intern &middot; Robotics Research at{' '}
-            <Link
-              href="https://www.thetelos.net/"
-              target="_blank"
-              className="underline underline-offset-2 hover:text-cyan-300 transition-colors break-all"
-            >
-              Telos
-            </Link>
-            <span className="text-white/50 text-xs ml-1">(2026.02–2026.03)</span>
+            Currently (2026.05 ~ current) Intern AI Researcher at Korea Electronics Technology Institute
           </p>
           <p>
             Software Engineer at{' '}
