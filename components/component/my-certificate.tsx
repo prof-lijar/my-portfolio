@@ -1,21 +1,37 @@
 import Image from 'next/image'
-import { AspectRatio } from '@radix-ui/react-aspect-ratio'
-import {
-  CardTitle,
-  CardDescription,
-  CardHeader,
-  CardContent,
-  CardFooter,
-  Card,
-} from '@/components/ui/card'
-import { Button } from '../ui/button'
 import Link from 'next/link'
 
+import { CardDescription } from '@/components/ui/card'
+
+type Certificate = {
+  imgSrc?: string
+  pdfSrc?: string
+  description: string
+  issuer?: string
+  verifyHref?: string
+  viewHref: string
+}
+
 const MyCertificates = () => {
-  const certificates = [
+  const certificates: Certificate[] = [
+    {
+      pdfSrc: '/supervised_machine_learning.pdf',
+      description: 'Supervised Machine Learning: Regression and Classification',
+      issuer: 'DeepLearning.AI / Coursera',
+      verifyHref: 'https://coursera.org/share/6be08a2a104d891c5dab438a45d4ec77',
+      viewHref: '/supervised_machine_learning.pdf',
+    },
+    {
+      pdfSrc: '/advanced_learning_algorithm.pdf',
+      description: 'Advanced Learning Algorithms',
+      issuer: 'DeepLearning.AI / Coursera',
+      verifyHref: 'https://coursera.org/share/b28d8a1ea915558d4248f345bf93eff7',
+      viewHref: '/advanced_learning_algorithm.pdf',
+    },
     {
       imgSrc: '/javascript_DSA.png',
       description: 'Legacy Javascript Algorithms and Data Structures',
+      issuer: 'freeCodeCamp',
       verifyHref:
         'https://www.freecodecamp.org/certification/lijar/javascript-algorithms-and-data-structures',
       viewHref: '/javascript_DSA.png',
@@ -23,17 +39,11 @@ const MyCertificates = () => {
     {
       imgSrc: '/RWD.png',
       description: 'Responsive Web Design',
+      issuer: 'freeCodeCamp',
       verifyHref:
         'https://www.freecodecamp.org/certification/lijar/responsive-web-design',
       viewHref: '/RWD.png',
     },
-    {
-      imgSrc: '/excel.jpg',
-      description: 'Microsoft Excel Expert (Office 2016)',
-      viewHref: '/excel.jpg',
-    },
-    { imgSrc: '/topik.png', description: 'TOPIK', viewHref: '/topik.png' },
-    { imgSrc: '/grade.jpg', description: 'Transcript', viewHref: '/grade.jpg' },
   ]
 
   return (
@@ -51,20 +61,41 @@ const MyCertificates = () => {
           {certificates.map((cert, index) => (
             <div
               key={index}
-              className="bg-gray-900/50 border-gray-800/50 shadow-lg hover:shadow-cyan-500/50 transition-shadow duration-300 rounded-lg p-4 flex flex-col items-center gap-2"
+              className="group flex flex-col gap-3 rounded-lg border border-gray-800/60 bg-gray-900/50 p-4 shadow-lg transition duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-cyan-500/30"
             >
-              <Image
-                src={cert.imgSrc}
-                alt="certificate"
-                width={350}
-                height={300}
-                className="mb-3 rounded-lg"
-              />
-              <div className="flex items-start justify-between w-full">
-                <CardDescription>{cert.description}</CardDescription>
+              <div className="block overflow-hidden rounded-md border border-gray-800 bg-slate-950">
+                {cert.pdfSrc ? (
+                  <iframe
+                    src={`${cert.pdfSrc}#toolbar=0&navpanes=0&scrollbar=0`}
+                    title={cert.description}
+                    className="h-56 w-full bg-white md:h-64"
+                  />
+                ) : (
+                  <Image
+                    src={cert.imgSrc ?? ''}
+                    alt={cert.description}
+                    width={350}
+                    height={300}
+                    className="h-56 w-full object-cover transition duration-300 group-hover:scale-[1.02] md:h-64"
+                  />
+                )}
+              </div>
+              <div className="flex w-full items-start justify-between gap-4">
+                <div className="min-w-0">
+                  <CardDescription className="text-sm text-gray-200">
+                    {cert.description}
+                  </CardDescription>
+                  {cert.issuer && (
+                    <p className="mt-1 text-xs text-gray-500">{cert.issuer}</p>
+                  )}
+                </div>
                 <div className="flex items-center gap-2">
                   {cert.verifyHref && (
-                    <Link href={cert.verifyHref}>
+                    <Link
+                      href={cert.verifyHref}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <span className="text-sm underline hover:text-cyan-400 transition-colors">
                         verify
                       </span>
@@ -90,4 +121,3 @@ const MyCertificates = () => {
 }
 
 export default MyCertificates
-
