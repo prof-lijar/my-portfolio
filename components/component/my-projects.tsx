@@ -18,6 +18,22 @@ const MyProjects = () => {
   const projects: PortfolioProject[] = [
     {
       id: 1,
+      slug: 'orchast-agent',
+      title: 'Orchast Agent',
+      description: 'Collection of Google ADK agents for text compression, tutorials, debugging, course generation, and self-evolving workflows.',
+      icons: ['Google ADK', 'Agents CLI', 'Gemini', 'Vertex AI', 'Python'],
+      badge: 'AI Agents',
+    },
+    {
+      id: 2,
+      slug: 'sheetpilot',
+      title: 'SheetPilot',
+      description: 'Local AI spreadsheet workbench that uses Ollama and sandboxed pandas code to process Excel and CSV files from prompts.',
+      icons: ['Streamlit', 'Ollama', 'Python', 'pandas', 'openpyxl'],
+      badge: 'Local AI Workbench',
+    },
+    {
+      id: 3,
       slug: 'multi-lang-live-translation',
       title: 'Multi-Language Live Translation Using SLLM Models',
       description: 'Technical evaluation of Small Language Models for real-time multilingual broadcasting.',
@@ -25,7 +41,7 @@ const MyProjects = () => {
       badge: 'Research SLLMs',
     },
     {
-      id: 2,
+      id: 4,
       slug: 'vision-guided-ai-agent-controlled-robot-system',
       title: 'Vision-Guided Robot Pick System',
       description: 'Mini project for vision-guided robotic pick workflow.',
@@ -33,7 +49,7 @@ const MyProjects = () => {
       badge: 'Robotics AI Agent',
     },
     {
-      id: 3,
+      id: 5,
       slug: 'anygrow-smart-farm',
       title: 'Anygrow3',
       description: 'Smart Farm project',
@@ -45,28 +61,12 @@ const MyProjects = () => {
       badge: 'IoT Smart Farm',
     },
     {
-      id: 4,
+      id: 6,
       slug: 'vr-shopping-mall',
       title: 'Metagrow',
       description: 'VR Shopping Mall for clothing: Unity, C#, Ready Player Me avatars, and Meta Oculus Quest 3.',
       icons: ['Unity', 'C#', 'Oculus Quest 3'],
       badge: 'Research Metaverse VR/XR',
-    },
-    {
-      id: 5,
-      slug: 'orchast-agent',
-      title: 'Orchast Agent',
-      description: 'Collection of Google ADK agents for text compression, tutorials, debugging, course generation, and self-evolving workflows.',
-      icons: ['Google ADK', 'Agents CLI', 'Gemini', 'Vertex AI', 'Python'],
-      badge: 'AI Agents',
-    },
-    {
-      id: 6,
-      slug: 'sheetpilot',
-      title: 'SheetPilot',
-      description: 'Local AI spreadsheet workbench that uses Ollama and sandboxed pandas code to process Excel and CSV files from prompts.',
-      icons: ['Streamlit', 'Ollama', 'Python', 'pandas', 'openpyxl'],
-      badge: 'Local AI Workbench',
     },
   ];
 
