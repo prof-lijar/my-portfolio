@@ -1,10 +1,6 @@
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '../ui/button';
 import Link from 'next/link';
-import JavaIcon from '@/resource/java.svg';
-import JSPIcon from '@/resource/jsp.svg';
-import ReactJsIcon from '@/resource/reactjs.svg';
-import { DatabaseIcon } from '../icons/icons';
 import { ExternalLink, Server, Cloud, Code2, Users, Rocket } from 'lucide-react';
 import type { ReactNode } from 'react';
 
@@ -55,40 +51,6 @@ const MyProjects = () => {
       description: 'VR Shopping Mall for clothing: Unity, C#, Ready Player Me avatars, and Meta Oculus Quest 3.',
       icons: ['Unity', 'C#', 'Oculus Quest 3'],
       badge: 'Research Metaverse VR/XR',
-    },
-    {
-      id: 5,
-      slug: 'nama-real-estate',
-      title: 'NAMA Real Estate',
-      description: 'Real Estate Website developed with Java, JSP',
-      icons: [
-        <JavaIcon key="java" className="w-6 h-6" />,
-        <JSPIcon key="jsp" className="w-6 h-6" />,
-        <DatabaseIcon key="db" className="w-6 h-6" />,
-        'MySQL',
-      ],
-      badge: 'Website',
-    },
-    {
-      id: 6,
-      slug: 'minaw-ai',
-      title: 'MiNaw AI',
-      description: 'AI ChatBot developed using Gemini API, LangChain and Azure speech recognition',
-      icons: ['GeminiAPI', 'LangChain', 'Azure'],
-      badge: 'AI ChatBot',
-    },
-    
-    {
-      id: 7,
-      slug: 'nama-ecommerce',
-      title: 'NAMA E-commerce',
-      description: 'Food ordering and delivery Website',
-      icons: [
-        <ReactJsIcon key="react" className="w-6 h-6" />,
-        <DatabaseIcon key="db" className="w-6 h-6" />,
-        'Firebase',
-      ],
-      badge: 'Website',
     },
   ];
 
