@@ -52,6 +52,22 @@ const MyProjects = () => {
       icons: ['Unity', 'C#', 'Oculus Quest 3'],
       badge: 'Research Metaverse VR/XR',
     },
+    {
+      id: 5,
+      slug: 'orchast-agent',
+      title: 'Orchast Agent',
+      description: 'Collection of Google ADK agents for text compression, tutorials, debugging, course generation, and self-evolving workflows.',
+      icons: ['Google ADK', 'Agents CLI', 'Gemini', 'Vertex AI', 'Python'],
+      badge: 'AI Agents',
+    },
+    {
+      id: 6,
+      slug: 'sheetpilot',
+      title: 'SheetPilot',
+      description: 'Local AI spreadsheet workbench that uses Ollama and sandboxed pandas code to process Excel and CSV files from prompts.',
+      icons: ['Streamlit', 'Ollama', 'Python', 'pandas', 'openpyxl'],
+      badge: 'Local AI Workbench',
+    },
   ];
 
   const highlights = [
