@@ -56,15 +56,21 @@ const Timeline = () => {
     },
     {
       title: "Software Engineer | HuemoneLab",
-      time: "2025~",
+      time: "2025",
       description:
         "Developing Gyopool AI, AI platform for teachers and students",
     },
     {
-      title: "Intern AI Researcher | KETI",
-      time: "2026.05~current",
+      title: "Intern | Telos",
+      time: "2026",
       description:
-        "Intern AI Researcher at Korea Electronics Technology Institute",
+        "Intern at Telos",
+    },
+    {
+      title: "AI Researcher | KETI",
+      time: "2026.05",
+      description:
+        "AI Researcher at Korea Electronics Technology Institute",
     },
   ];
 
