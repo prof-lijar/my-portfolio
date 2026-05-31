@@ -19,9 +19,7 @@ const info = [
     label: "Language Proficiency",
     value: (
       <span className="font-bold">
-        English TOEIC 865<span className="mx-1">|</span>Korean TOPIK 5<span className="mx-1">|</span>
-        <span className="mx-1">|</span>Myanmar<span className="mx-1">|</span>
-        Akha
+        English TOEIC 865<span className="mx-1">|</span>Korean TOPIK 5
       </span>
     ),
     icon: <FaLanguage className="text-purple-500" />,
@@ -110,16 +108,33 @@ const Profile = () => {
         </h1>
         <div className="text-white/90 text-sm sm:text-base font-medium mt-1 text-center break-words space-y-1">
           <p>
-            Currently (2026.05 ~ current) Intern AI Researcher at Korea Electronics Technology Institute
+            AI Researcher at{" "}
+            <Link
+              href="https://www.keti.re.kr/"
+              target="_blank"
+              className="underline underline-offset-2 hover:text-cyan-300 transition-colors break-all"
+            >
+              Korea Electronics Technology Institute
+            </Link>
           </p>
           <p>
-            Software Engineer at{' '}
+            Intern at{" "}
+            <Link
+              href="https://soft.thetelos.net/"
+              target="_blank"
+              className="underline underline-offset-2 hover:text-cyan-300 transition-colors break-all"
+            >
+              Telos
+            </Link>
+          </p>
+          <p>
+            Software Engineer at{" "}
             <Link
               href="https://huemoneedu.com/"
               target="_blank"
               className="underline underline-offset-2 hover:text-cyan-300 transition-colors break-all"
             >
-              Huemone Lab
+              HuemoneLab
             </Link>
             <span className="text-white/50 text-xs ml-1">(2024.07–2026.02)</span>
           </p>
