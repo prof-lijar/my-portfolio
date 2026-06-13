@@ -5,6 +5,7 @@ import MyProjects from "./my-projects";
 import MainIntro from "./main-intro";
 import HelloKaistBanner from "./hello-kaist-banner";
 import ResearchPapers from "@/components/hello-kaist/research-papers";
+import AiAgentPitchVideo from "./ai-agent-pitch-video";
 
 export function LandingPage() {
   return (
@@ -13,6 +14,7 @@ export function LandingPage() {
         <section>
           <MainIntro />
         </section>
+        <AiAgentPitchVideo />
         <section className="z-20">
           <SubNav />
         </section>
