@@ -72,7 +72,7 @@ const Sphere = () => {
     skills.forEach((skill, index) => {
       // Calculate position on sphere using Fibonacci spiral
       const goldenAngle = Math.PI * (3 - Math.sqrt(5));
-      const y = 1 - (index / (skills.length - 1)) * 2;
+      const y = 1 - ((index + 0.5) / skills.length) * 2;
       const radius = Math.sqrt(1 - y * y);
       const theta = goldenAngle * index;
 
