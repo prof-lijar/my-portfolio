@@ -13,6 +13,7 @@ const skills = [
   "김유선 선생님",
   "ဆရာမ သဲသဲ",
   "မီဂါ",
+  "Dr.Amar",
 ];
 
 const Sphere = () => {
