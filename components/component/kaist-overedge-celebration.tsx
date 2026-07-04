@@ -102,6 +102,15 @@ export default function KaistOveredgeCelebration() {
                     Certificate for the AI Agent 1인 창업 program, focused on
                     building and launching with agentic AI.
                   </p>
+                  <blockquote className="max-w-md border-l-2 border-amber-200/60 pl-3 text-sm leading-6 text-slate-300 sm:text-base">
+                    <p>
+                      &quot;Sometimes you have to step over the edge to know
+                      where it is.&quot;
+                    </p>
+                    <cite className="mt-2 block not-italic text-xs font-semibold text-amber-200 sm:text-sm">
+                      - 英 현대미술가 Damien Hirst
+                    </cite>
+                  </blockquote>
                 </div>
               </div>
 
