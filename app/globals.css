@@ -145,6 +145,101 @@
   animation: fade-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
+@keyframes kaist-pop-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes kaist-stage-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes kaist-certificate-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) rotate(1.2deg) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(-1.2deg) scale(1);
+  }
+}
+
+@keyframes kaist-confetti-fall {
+  from {
+    background-position: 8% -20%, 32% -14%, 58% -24%, 82% -10%, 96% -22%;
+  }
+  to {
+    background-position: 8% 120%, 32% 112%, 58% 124%, 82% 110%, 96% 122%;
+  }
+}
+
+@keyframes kaist-launcher-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.kaist-celebration-stage {
+  animation: kaist-stage-enter 0.18s ease-out both;
+}
+
+.kaist-pop-enter {
+  animation: kaist-pop-enter 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.kaist-certificate-enter {
+  animation: kaist-certificate-enter 0.46s cubic-bezier(0.22, 1, 0.36, 1)
+    0.08s both;
+}
+
+.kaist-confetti {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0.9;
+  background-image:
+    linear-gradient(135deg, #facc15 0 10px, transparent 10px),
+    linear-gradient(45deg, #22d3ee 0 8px, transparent 8px),
+    linear-gradient(135deg, #fb7185 0 9px, transparent 9px),
+    linear-gradient(45deg, #34d399 0 7px, transparent 7px),
+    linear-gradient(135deg, #ffffff 0 6px, transparent 6px);
+  background-repeat: no-repeat;
+  background-size: 16px 16px, 13px 13px, 14px 14px, 12px 12px, 10px 10px;
+  animation: kaist-confetti-fall 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.kaist-launcher-enter {
+  animation: kaist-launcher-enter 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kaist-celebration-stage,
+  .kaist-pop-enter,
+  .kaist-certificate-enter,
+  .kaist-confetti,
+  .kaist-launcher-enter {
+    animation-duration: 1ms;
+    animation-delay: 0ms;
+  }
+}
+
 /* Add this at the end of your file */
 
 .card-glass {

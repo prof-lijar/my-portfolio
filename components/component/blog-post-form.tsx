@@ -3,12 +3,23 @@ import { Save } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { BlogEditor } from "@/components/component/blog-editor";
 import { saveBlogPostAction } from "@/app/admin/blog/actions";
 import type { BlogPost } from "@/lib/blog-types";
 
-export function BlogPostForm({ post }: { post?: BlogPost | null }) {
+type BlogPostFormProps = {
+  post?: BlogPost | null;
+  cancelHref?: string;
+  submitLabel?: string;
+  submitDisabled?: boolean;
+};
+
+export function BlogPostForm({
+  post,
+  cancelHref = "/admin/blog",
+  submitLabel = "Save",
+  submitDisabled = false,
+}: BlogPostFormProps) {
   return (
     <form action={saveBlogPostAction} className="space-y-6">
       {post?.id ? <input name="id" type="hidden" value={post.id} /> : null}
@@ -23,16 +34,6 @@ export function BlogPostForm({ post }: { post?: BlogPost | null }) {
               required
               defaultValue={post?.title || ""}
               placeholder="What are you writing about?"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="excerpt">Excerpt</Label>
-            <Textarea
-              id="excerpt"
-              name="excerpt"
-              defaultValue={post?.excerpt || ""}
-              placeholder="Short summary for the blog list and metadata"
             />
           </div>
 
@@ -84,12 +85,12 @@ export function BlogPostForm({ post }: { post?: BlogPost | null }) {
           </div>
 
           <div className="flex gap-2 pt-2">
-            <Button type="submit" className="flex-1">
+            <Button type="submit" className="flex-1" disabled={submitDisabled}>
               <Save className="mr-2 h-4 w-4" />
-              Save
+              {submitLabel}
             </Button>
             <Button asChild type="button" variant="outline">
-              <Link href="/admin/blog">Cancel</Link>
+              <Link href={cancelHref}>Cancel</Link>
             </Button>
           </div>
         </aside>
@@ -97,4 +98,3 @@ export function BlogPostForm({ post }: { post?: BlogPost | null }) {
     </form>
   );
 }
-

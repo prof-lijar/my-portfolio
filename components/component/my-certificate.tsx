@@ -15,6 +15,13 @@ type Certificate = {
 const MyCertificates = () => {
   const certificates: Certificate[] = [
     {
+      imgSrc: '/1_LI JAR_KAIST_OverEdge_2026_Membership_Certificate.png',
+      description: 'KAIST OverEdge 2026 AI Agent 1인 창업 Membership',
+      issuer: 'KAIST OverEdge',
+      verifyHref: 'https://kaist-overedge.com/program',
+      viewHref: '/1_LI JAR_KAIST_OverEdge_2026_Membership_Certificate.png',
+    },
+    {
       pdfSrc: '/supervised_machine_learning.pdf',
       description: 'Supervised Machine Learning: Regression and Classification',
       issuer: 'DeepLearning.AI / Coursera',
