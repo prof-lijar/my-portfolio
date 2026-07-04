@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import  {Navbar}  from "@/components/component/nav-bar";
 import Footer from "@/components/component/footer";
 import Background from "@/components/component/background";
+import KaistOveredgeCelebration from "@/components/component/kaist-overedge-celebration";
 
 const fontSans = FontSans({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
           <div className="py-10 pb-[200px]">{children}</div>
           <div className="mt-10 absolute inset-x-0 bottom-0"><Footer/></div>
         </div>
+        <KaistOveredgeCelebration />
       </body>
     </html>
   );
