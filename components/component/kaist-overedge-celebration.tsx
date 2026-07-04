@@ -98,10 +98,6 @@ export default function KaistOveredgeCelebration() {
                   <h2 className="max-w-xl text-3xl font-black leading-[0.96] tracking-tight text-white min-[390px]:text-4xl sm:text-5xl lg:text-6xl">
                     KAIST OverEdge 2026
                   </h2>
-                  <p className="max-w-md text-sm leading-6 text-slate-200 sm:text-base md:text-lg md:leading-7">
-                    Certificate for the AI Agent 1인 창업 program, focused on
-                    building and launching with agentic AI.
-                  </p>
                   <blockquote className="max-w-md border-l-2 border-amber-200/60 pl-3 text-sm leading-6 text-slate-300 sm:text-base">
                     <p>
                       &quot;Sometimes you have to step over the edge to know
