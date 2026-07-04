@@ -1,11 +1,12 @@
 import { cookies } from "next/headers";
 import crypto from "node:crypto";
+import { getBlogAdminPassword } from "@/lib/blog-env";
 
 const COOKIE_NAME = "blog_admin_session";
 const SESSION_VALUE = "blog-admin";
 
 function getSecret() {
-  return process.env.BLOG_ADMIN_PASSWORD || process.env.ADMIN_PASSWORD || "";
+  return getBlogAdminPassword();
 }
 
 function signSession(secret: string) {
@@ -51,4 +52,3 @@ export function isBlogAdminAuthenticated() {
   const value = cookies().get(COOKIE_NAME)?.value;
   return value === signSession(secret);
 }
-

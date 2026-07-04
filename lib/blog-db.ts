@@ -1,15 +1,8 @@
 import { sql } from "@vercel/postgres";
 import { randomUUID } from "node:crypto";
 import type { BlogContent, BlogPost, BlogPostInput } from "@/lib/blog-types";
+import { isBlogDatabaseConfigured, requireBlogDatabaseEnv } from "@/lib/blog-env";
 import { getExcerpt, normalizeBlogContent } from "@/lib/blog-render";
-
-function hasDatabase() {
-  return Boolean(
-    process.env.POSTGRES_URL ||
-      process.env.POSTGRES_PRISMA_URL ||
-      process.env.POSTGRES_URL_NON_POOLING
-  );
-}
 
 function toPost(row: any): BlogPost {
   return {
@@ -30,9 +23,7 @@ export function slugify(value: string) {
 }
 
 export async function ensureBlogTable() {
-  if (!hasDatabase()) {
-    throw new Error("Postgres is not configured.");
-  }
+  requireBlogDatabaseEnv();
 
   await sql`
     create table if not exists blog_posts (
@@ -52,7 +43,7 @@ export async function ensureBlogTable() {
 }
 
 export async function listPublishedBlogPosts() {
-  if (!hasDatabase()) return [];
+  if (!isBlogDatabaseConfigured()) return [];
   await ensureBlogTable();
 
   const data = await sql<BlogPost>`
@@ -66,7 +57,7 @@ export async function listPublishedBlogPosts() {
 }
 
 export async function getPublishedBlogPost(slug: string) {
-  if (!hasDatabase()) return null;
+  if (!isBlogDatabaseConfigured()) return null;
   await ensureBlogTable();
 
   const data = await sql<BlogPost>`
@@ -80,6 +71,7 @@ export async function getPublishedBlogPost(slug: string) {
 }
 
 export async function listAdminBlogPosts() {
+  if (!isBlogDatabaseConfigured()) return [];
   await ensureBlogTable();
 
   const data = await sql<BlogPost>`
@@ -92,6 +84,7 @@ export async function listAdminBlogPosts() {
 }
 
 export async function getAdminBlogPost(id: string) {
+  if (!isBlogDatabaseConfigured()) return null;
   await ensureBlogTable();
 
   const data = await sql<BlogPost>`

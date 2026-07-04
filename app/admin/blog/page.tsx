@@ -79,7 +79,7 @@ export default async function AdminBlogPage({ searchParams }: PageProps) {
         </div>
         <div className="flex gap-2">
           <Button asChild>
-            <Link href="/admin/blog/new">
+            <Link href="/blog/write">
               <Plus className="mr-2 h-4 w-4" />
               New post
             </Link>
@@ -131,11 +131,10 @@ export default async function AdminBlogPage({ searchParams }: PageProps) {
           <FileText className="mx-auto mb-3 h-8 w-8 text-gray-500" />
           <p className="text-gray-300">No posts yet.</p>
           <Button asChild className="mt-4">
-            <Link href="/admin/blog/new">Write the first post</Link>
+            <Link href="/blog/write">Write the first post</Link>
           </Button>
         </div>
       )}
     </main>
   );
 }
-
