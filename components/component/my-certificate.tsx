@@ -6,6 +6,7 @@ import { CardDescription } from '@/components/ui/card'
 type Certificate = {
   imgSrc?: string
   pdfSrc?: string
+  imgFit?: 'cover' | 'contain'
   description: string
   issuer?: string
   verifyHref?: string
@@ -14,6 +15,22 @@ type Certificate = {
 
 const MyCertificates = () => {
   const certificates: Certificate[] = [
+    {
+      imgSrc: '/SZLL_Dive_2026_Busan_대상_LIJAR.jpg',
+      imgFit: 'contain',
+      description:
+        '글로벌 데이터 해커톤 DIVE 2026 대상 (Grand Prize) — Team SZLL',
+      issuer: '부산광역시 · 부산테크노파크',
+      viewHref: '/SZLL_Dive_2026_Busan_대상_LIJAR.jpg',
+    },
+    {
+      imgSrc: '/SZLL_Busan_Dive_2026_1등_LIJAR.jpg',
+      imgFit: 'contain',
+      description:
+        '글로벌 데이터 해커톤 DIVE 2026 · 부산시설공단 X 월체어 트랙 1등 — Team SZLL',
+      issuer: '부산테크노파크',
+      viewHref: '/SZLL_Busan_Dive_2026_1등_LIJAR.jpg',
+    },
     {
       imgSrc: '/1_LI JAR_KAIST_OverEdge_2026_Membership_Certificate.png',
       description: 'KAIST OverEdge 2026 AI Agent 1인 창업 Membership',
@@ -83,7 +100,11 @@ const MyCertificates = () => {
                     alt={cert.description}
                     width={350}
                     height={300}
-                    className="h-56 w-full object-cover transition duration-300 group-hover:scale-[1.02] md:h-64"
+                    className={`h-56 w-full transition duration-300 group-hover:scale-[1.02] md:h-64 ${
+                      cert.imgFit === 'contain'
+                        ? 'object-contain'
+                        : 'object-cover'
+                    }`}
                   />
                 )}
               </div>
