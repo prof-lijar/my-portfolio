@@ -21,6 +21,7 @@ const MyCertificates = () => {
       description:
         '글로벌 데이터 해커톤 DIVE 2026 대상 (Grand Prize) — Team SZLL',
       issuer: '부산광역시 · 부산테크노파크',
+      verifyHref: 'https://www.dxchallenge.co.kr/dive-2026',
       viewHref: '/SZLL_Dive_2026_Busan_대상_LIJAR.jpg',
     },
     {
@@ -29,6 +30,7 @@ const MyCertificates = () => {
       description:
         '글로벌 데이터 해커톤 DIVE 2026 · 부산시설공단 X 월체어 트랙 1등 — Team SZLL',
       issuer: '부산테크노파크',
+      verifyHref: 'https://www.dxchallenge.co.kr/dive-2026',
       viewHref: '/SZLL_Busan_Dive_2026_1등_LIJAR.jpg',
     },
     {
