@@ -12,9 +12,42 @@ import {
   FaBriefcase,
   FaInstagram,
   FaLinkedin,
+  FaTrophy,
 } from "react-icons/fa";
 
 const info = [
+  {
+    label: "Awards & Programs",
+    value: (
+      <div className="flex flex-col gap-2 font-bold text-base mt-1 mb-1">
+        <span className="flex flex-col">
+          <Link
+            href="https://www.dxchallenge.co.kr/dive-2026"
+            target="_blank"
+            className="underline underline-offset-2 hover:text-cyan-400 transition-colors"
+          >
+            대상 (Grand Prize) — 글로벌 데이터 해커톤 DIVE 2026
+          </Link>
+          <span className="text-sm font-normal text-gray-400">
+            Busan Global Data Hackathon, Team SZLL · 2026.08
+          </span>
+        </span>
+        <span className="flex flex-col">
+          <Link
+            href="https://kaist-overedge.com/program"
+            target="_blank"
+            className="underline underline-offset-2 hover:text-cyan-400 transition-colors"
+          >
+            KAIST OverEdge 2026 Membership
+          </Link>
+          <span className="text-sm font-normal text-gray-400">
+            AI Agent 1인 창업 program · 2026.07
+          </span>
+        </span>
+      </div>
+    ),
+    icon: <FaTrophy className="text-yellow-500" />,
+  },
   {
     label: "Language Proficiency",
     value: (
@@ -118,7 +151,17 @@ const Profile = () => {
             </Link>
           </p>
           <p>
-            Intern at{" "}
+            AX Researcher at{" "}
+            <Link
+              href="https://nextor.ai"
+              target="_blank"
+              className="underline underline-offset-2 hover:text-cyan-300 transition-colors break-all"
+            >
+              Nextor.AI
+            </Link>
+          </p>
+          <p>
+            Robotics Research at{" "}
             <Link
               href="https://soft.thetelos.net/"
               target="_blank"
