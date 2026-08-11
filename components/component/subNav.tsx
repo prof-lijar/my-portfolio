@@ -44,9 +44,11 @@ const SubNav: React.FC = () => {
 
   return (
     <div ref={subNavRef} className={`w-full bg-transparent py-2 transition-all duration-300 ${isSticky ? 'fixed top-[64px] bg-gray-900/50 backdrop-blur-md shadow-md' : ''}`}>
-      <div className="pt-10 flex justify-center">
-            <NavigationMenuDemo />
-          </div>
+      <div className="pt-10 overflow-x-auto scrollbar-hide overscroll-x-contain">
+        <div className="mx-auto w-max px-4">
+          <NavigationMenuDemo />
+        </div>
+      </div>
     </div>
   );
 };
