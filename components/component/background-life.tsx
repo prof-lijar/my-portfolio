@@ -94,8 +94,7 @@ const Timeline = () => {
       time: "2026.07",
       description: (
         <>
-          Selected for the KAIST OverEdge 2026 AI Agent 1인 창업 membership
-          program.{" "}
+          Selected for the KAIST OverEdge 2026 AI Agent 1인 창업 program.{" "}
           <a
             href="https://kaist-overedge.com/program"
             target="_blank"

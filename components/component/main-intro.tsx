@@ -49,8 +49,8 @@ const MainIntro = () => {
                 "#KETI",
                 "#NextorAI",
                 "#KAISTOverEdge2026",
-                "#AIAgents",
                 "#SuperJar",
+                "#AIAgents",
               ].map((tag) => (
                 <span
                   key={tag}

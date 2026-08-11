@@ -38,7 +38,7 @@ const info = [
             target="_blank"
             className="underline underline-offset-2 hover:text-cyan-400 transition-colors"
           >
-            KAIST OverEdge 2026 Membership
+            KAIST OverEdge 2026
           </Link>
           <span className="text-sm font-normal text-gray-400">
             AI Agent 1인 창업 program · 2026.07
