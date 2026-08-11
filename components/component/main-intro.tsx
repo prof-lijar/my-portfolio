@@ -3,7 +3,7 @@ import { WriterEffect } from "./typewriter-effect";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const MainIntro = () => {
-  const message1 = ["LI JAR", "Software Engineer", "AI Engineer"];
+  const message1 = ["LI JAR", "Entrepreneur", "AI Researcher", "Software Engineer"];
 
   const message2 = [
     "Hi, I'm LI JAR — I can't sleep without solving your problems.Will you help me?",
@@ -48,10 +48,8 @@ const MainIntro = () => {
               {[
                 "#research",
                 "#AI",
-                "#innovation",
-                "#software",
-                "#collaboration",
-                "#edtech",
+                "#KAISTOverEdge2026",
+                "#AIAgents",
               ].map((tag) => (
                 <span
                   key={tag}
