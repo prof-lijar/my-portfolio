@@ -61,10 +61,27 @@ const Timeline = () => {
         "Developing Gyopool AI, AI platform for teachers and students",
     },
     {
-      title: "Intern | Telos",
+      title: "Robotics Research | Telos",
       time: "2026",
       description:
-        "Intern at Telos",
+        "Robotics Research at Telos",
+    },
+    {
+      title: "AX Researcher | Nextor.AI",
+      time: "2026",
+      description: (
+        <>
+          AX Researcher at{" "}
+          <a
+            href="https://nextor.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-cyan-400 transition-colors"
+          >
+            nextor.ai
+          </a>
+        </>
+      ),
     },
     {
       title: "AI Researcher | KETI",

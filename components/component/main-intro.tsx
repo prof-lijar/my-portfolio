@@ -46,10 +46,11 @@ const MainIntro = () => {
             </div>
             <div className="flex flex-wrap gap-2 mt-4">
               {[
-                "#research",
-                "#AI",
+                "#KETI",
+                "#NextorAI",
                 "#KAISTOverEdge2026",
                 "#AIAgents",
+                "#SuperJar",
               ].map((tag) => (
                 <span
                   key={tag}
