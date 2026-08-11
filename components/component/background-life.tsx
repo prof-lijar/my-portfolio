@@ -89,6 +89,43 @@ const Timeline = () => {
       description:
         "AI Researcher at Korea Electronics Technology Institute",
     },
+    {
+      title: "KAIST OverEdge 2026",
+      time: "2026.07",
+      description: (
+        <>
+          Selected for the KAIST OverEdge 2026 AI Agent 1인 창업 membership
+          program.{" "}
+          <a
+            href="https://kaist-overedge.com/program"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-cyan-400 transition-colors"
+          >
+            kaist-overedge.com
+          </a>
+        </>
+      ),
+    },
+    {
+      title: "Grand Prize | DIVE 2026",
+      time: "2026.08",
+      description: (
+        <>
+          대상 (Grand Prize) at the 글로벌 데이터 해커톤 DIVE 2026 Global Data
+          Hackathon in Busan, with Team SZLL — also 1st place in the 부산시설공단
+          X 월체어 track.{" "}
+          <a
+            href="https://www.dxchallenge.co.kr/dive-2026"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 hover:text-cyan-400 transition-colors"
+          >
+            dxchallenge.co.kr
+          </a>
+        </>
+      ),
+    },
   ];
 
   return (
