@@ -49,11 +49,9 @@ const info = [
     icon: <FaTrophy className="text-yellow-500" />,
   },
   {
-    label: "Language Proficiency",
+    label: "Language",
     value: (
-      <span className="font-bold">
-        English TOEIC 865<span className="mx-1">|</span>Korean TOPIK 5
-      </span>
+      <span className="font-bold">English, Korean, Burmese, Akha</span>
     ),
     icon: <FaLanguage className="text-purple-500" />,
   },

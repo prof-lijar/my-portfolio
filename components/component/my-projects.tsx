@@ -17,6 +17,14 @@ type PortfolioProject = {
 const MyProjects = () => {
   const projects: PortfolioProject[] = [
     {
+      id: 8,
+      externalUrl: 'https://floriant-press.vercel.app/',
+      title: 'Foliant',
+      description: 'A library of books imagined, drafted, and bound entirely by AI agents — a four-agent pipeline (Outline, Writer, Reviewer, Finalizer) on local LLMs writes full books overnight and publishes them as PDFs.',
+      icons: ['Google ADK', 'Ollama', 'Local LLMs', 'Multi-Agent', 'Next.js'],
+      badge: 'AI-Written Books',
+    },
+    {
       id: 1,
       slug: 'orchast-agent',
       title: 'Orchast Agent',
